@@ -1,53 +1,40 @@
 package main.jeu;
 
 public class Plateau {
-    
-    private int alignReq; //Alignement requis ( 4 pour Puissance4 | 5 pour Gomoku )
-    private int colonnes; //Colonnes du plateau ( 6 pour Puissance4 | 19 pour Gomoku )
-    private int lignes; //Lignes du plateau ( 7 pour Puissance4 | 19 pour Gomuku )
-    private char[][] plateau;
+    private int K; //Alignement requis ( 4 pour Puissance4 | 5 pour Gomoku )
+    private int N; //Colonnes du plateau ( 6 pour Puissance4 | 19 pour Gomoku )
+    private int M; //Lignes du plateau ( 7 pour Puissance4 | 19 pour Gomuku )
 
-    Plateau(int alignReq, int colonnes, int lignes){
-        this.alignReq = alignReq;
-        this.colonnes = colonnes;
-        this.lignes = lignes;
-        
-        plateau =new char[colonnes][lignes];
-        for(int i = 0 ; i < colonnes ; i++)
-			for(int j = 0 ; j < lignes ; j++)
-				plateau[i][j] = '.';
+    Plateau(int K, int N, int M){
+        this.K = K;
+        this.N = N;
+        this.M = M;
+    }
+    Plateau(){}
+
+    public int getK() {
+        return K;
     }
 
-    public int getAlignReq() {
-        return alignReq;
+    public void setK(int k) {
+        K = k;
     }
 
-    public void setAlignReq(int alignReq) {
-        this.alignReq = alignReq;
+    public int getN() {
+        return N;
     }
 
-    public int getColonnes() {
-        return colonnes;
+    public void setN(int n) {
+        N = n;
     }
 
-    public void setColonnes(int colonnes) {
-        this.colonnes = colonnes;
+    public int getM() {
+        return M;
     }
 
-    public int getLignes() {
-        return lignes;
+    public void setM(int m) {
+        M = m;
     }
 
-    public void setLignes(int lignes) {
-        this.lignes = lignes;
-    }
-
-    public char[][] getPlateau() {
-        return plateau;
-    }
-
-    public void setPlateau(char[][] plateau) {
-        this.plateau = plateau;
-    }
     
 }
