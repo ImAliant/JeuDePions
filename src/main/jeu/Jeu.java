@@ -3,7 +3,7 @@ package main.jeu;
 import java.util.Scanner;
 
 public class Jeu {
-    private kuplet ku;
+    private k_uplet ku;
     private Plateau p;
 
     Jeu(){
@@ -37,7 +37,7 @@ public class Jeu {
         for (int y = 0; y < p.getM(); y++) {
             System.out.print(compt);
             compt++;
-            if(compt <= 9){
+            if(compt <= 10){
 			    System.out.print(" |");
 			    for (int x = 0; x < p.getN(); x++) {
 			    	System.out.print(" " + p.getCases()[x][y].getEtat() + " ");
@@ -193,11 +193,11 @@ public class Jeu {
         }
     }
 
-    public kuplet getKu() {
+    public k_uplet getKu() {
         return ku;
     }
 
-    public void setKu(kuplet ku) {
+    public void setKu(k_uplet ku) {
         this.ku = ku;
     }
 }
