@@ -2,7 +2,7 @@ package main.jeu;
 
 public class Case {
     private char etat;
-    private k_uplet li;
+    private kuplet li;
 
     Case(char etat){
         this.etat = etat;
@@ -16,11 +16,11 @@ public class Case {
         this.etat = etat;
     }
 
-    public k_uplet getLi() {
+    public kuplet getLi() {
         return li;
     }
 
-    public void setLi(k_uplet li) {
+    public void setLi(kuplet li) {
         this.li = li;
     }
 
