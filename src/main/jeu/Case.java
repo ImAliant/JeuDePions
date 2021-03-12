@@ -1,8 +1,12 @@
 package main.jeu;
 
+import java.util.ArrayList;
+
 public class Case {
     private char etat;
-    private kuplet li;
+    private ArrayList li;
+    private int i;
+    private int j;
 
     Case(char etat){
         this.etat = etat;

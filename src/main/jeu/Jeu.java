@@ -3,7 +3,7 @@ package main.jeu;
 import java.util.Scanner;
 
 public class Jeu {
-    private k_uplet ku;
+    private kuplet ku;
     private Plateau p;
 
     Jeu(){
@@ -193,11 +193,11 @@ public class Jeu {
         }
     }
 
-    public k_uplet getKu() {
+    public kuplet getKu() {
         return ku;
     }
 
-    public void setKu(k_uplet ku) {
+    public void setKu(kuplet ku) {
         this.ku = ku;
     }
 }
