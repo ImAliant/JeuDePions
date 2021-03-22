@@ -20,7 +20,7 @@ public class Plateau {
             cases =new Case[N][M];
             for(int i = 0; i < N; i++){
                 for(int j = 0; j < M; j++){
-                    cases[i][j] =new Case('.');
+                    cases[i][j] =new Case(0, i, j, this);
                 } 
             }
         }
@@ -31,7 +31,7 @@ public class Plateau {
             cases =new Case[N][M];
             for(int i = 0; i < N; i++){
                 for(int j = 0; j < M; j++){
-                    cases[i][j] =new Case('.');
+                    cases[i][j] =new Case(0, i, j, this);
                 } 
             }
         }
@@ -42,7 +42,7 @@ public class Plateau {
             cases =new Case[N][M];
             for(int i = 0; i < N; i++){
                 for(int j = 0; j < M; j++){
-                    cases[i][j] =new Case('.');
+                    cases[i][j] =new Case(0, i, j, this);
                 } 
             }
         }
