@@ -9,6 +9,9 @@ public class kuplet{
     private ArrayList<Case[]> listKu;
 
     public kuplet(int x,int y,Plateau p){
+        this.x = x;
+        this.y = y;
+        this.p = p;
         listKu =new ArrayList<Case[]>();
         Case[] c =new Case[p.getK()];
         if(x+(p.getK()) < p.getN() && x-(p.getK()+1) > 0){
@@ -46,6 +49,47 @@ public class kuplet{
                 y--;
             }
         }
+        
+    }
+
+    public Plateau getP() {
+        return p;
+    }
+
+    public void setP(Plateau p) {
+        this.p = p;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public ArrayList<Case[]> getListKu() {
+        return listKu;
+    }
+
+    public void setListKu(ArrayList<Case[]> listKu) {
+        this.listKu = listKu;
     }
         /*listKu =new ArrayList<Case[]>();
         for(int i = x; i > p.getCases().length; i++){
