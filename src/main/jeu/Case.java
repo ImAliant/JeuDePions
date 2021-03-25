@@ -13,9 +13,17 @@ public class Case {
         this.x = x;
         this.y = y;
         this.etat = etat;
+
+        kuplet k =new kuplet(p);
         li =new ArrayList<kuplet>();
-        kuplet k =new kuplet(x, y, p);
-        li.add(k); 
+        for(int loop = 0; loop < k.getListKu().size(); loop++){
+                if(k.getListKu().get(loop)[loop].getX() == x){
+                    //li.add();
+                }
+                if(k.getListKu().get(loop)[loop].getY() == y){
+                    //li.add();
+                }
+        }
     }
 
     
@@ -41,6 +49,31 @@ public class Case {
     public void setLi(ArrayList<kuplet> li) {
         this.li = li;
     }
+
+    public Plateau getP() {
+        return p;
+    }
+
+    public void setP(Plateau p) {
+        this.p = p;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+    
 
     
 }
