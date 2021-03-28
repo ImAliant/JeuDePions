@@ -4,8 +4,9 @@ import java.util.ArrayList;
 
 public class Case {
     private Plateau p;
-    private int etat;
     private ArrayList<kuplet> li;
+    private int etat;
+    private int score;
     private int x;
     private int y;
 
@@ -13,20 +14,22 @@ public class Case {
         this.x = x;
         this.y = y;
         this.etat = etat;
+    }
+    Case(int etat, int x, int y, Plateau p, ArrayList<kuplet> li){
+        this(etat, x, y, p);
+        this.li = li;
+    }    
 
-        kuplet k =new kuplet(p);
+    public ArrayList<kuplet> initialisation(Plateau p){
         li =new ArrayList<kuplet>();
-        for(int loop = 0; loop < k.getListKu().size(); loop++){
-                if(k.getListKu().get(loop)[loop].getX() == x){
-                    //li.add();
-                }
-                if(k.getListKu().get(loop)[loop].getY() == y){
-                    //li.add();
+        for(int loop = 0; loop < p.getListKu().size(); loop++){
+                if(p.getListKu().get(loop).getC()[loop].getX() == this.x && p.getListKu().get(loop).getC()[loop].getY() == this.y){
+                    kuplet k = p.getListKu().get(loop);
+                    li.add(k);
                 }
         }
+        return li;
     }
-
-    
 
     public char getEtat() {
         if(etat == 1){
@@ -72,6 +75,14 @@ public class Case {
 
     public void setY(int y) {
         this.y = y;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
     }
     
 
