@@ -13,13 +13,12 @@ public class Case {
         this.x = x;
         this.y = y;
         this.etat = etat;
-        Case[] c = new Case[0];
-        kuplet k =new kuplet(p, c);
-        k.initialisationKuplet(p);
-        for(int loop = 0; loop < k.getListKu().size(); loop++){
-        	for(int i = 0; i < k.getListKu().get(loop).length; i++){    
-           			if(k.getListKu().get(loop)[i].getX() == x && k.getListKu().get(loop)[i].getY() == y){           			
-        				li.add(new kuplet(p, k.getListKu().get(loop)));
+        this.p = p;
+        p.initialisationKuplet();
+        for(int loop = 0; loop < p.getListKu().size(); loop++){
+        	for(int i = 0; i < p.getListKu().get(loop).length; i++){    
+           			if(p.getListKu().get(loop)[i].getX() == x && p.getListKu().get(loop)[i].getY() == y){           			
+        				li.add(new kuplet(p, p.getListKu().get(loop)));
         			}        		
            	}
         }

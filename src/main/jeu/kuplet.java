@@ -10,53 +10,10 @@ public class kuplet{
 
     public kuplet(Plateau p, Case[] c){
         this.p = p;
-        this.c = c;       
-    }
-
-    public void initialisationKuplet(Plateau p){
-        listKu =new ArrayList<Case[]>();
-        //Kuplets horizontaux
-        for(int i = 0; i < p.getN(); i++){
-            for(int j = 0; j < p.getM(); j++){
-                for(int loop = 0; loop < p.getK(); loop++){
-                    c[loop] = p.getCases()[i][j];
-                    i++;
-                }
-            }
-            listKu.add(c);
-        }
-        //Kuplets verticaux
-        for(int i = 0; i < p.getN(); i++){
-            for(int j = 0; j < p.getM(); j++){
-                for(int loop = 0; loop < p.getK(); loop++){
-                    c[loop] = p.getCases()[i][j];
-                    j++;
-                }
-            }
-            listKu.add(c);
-        }
-        //Kuplets HG-BD
-        for(int i = 0; i < p.getN(); i++){
-            for(int j = 0; j < p.getM(); j++){
-                for(int loop = 0; loop < p.getK(); loop++){
-                    c[loop] = p.getCases()[i][j];
-                    i++;
-                    j++;
-                }
-            }
-            listKu.add(c);
-        }
-        //Kuplets BG-HD
-        for(int i = 0; i > 0; i++){
-            for(int j = p.getM(); j >= 0; j--){
-                for(int loop = 0; loop < p.getK(); loop++){
-                    c[loop] = p.getCases()[i][j];
-                    i++;
-                    j--;
-                }
-            }
-            listKu.add(c);
-        }
+        this.c = new Case[p.getK()]; 
+        /*for(int i=0;i<c.length;i++) {
+        	if(c[i].getEtat())
+        }*/
     }
 
     public Plateau getP() {
@@ -73,10 +30,6 @@ public class kuplet{
 
     public void setScore(int score) {
         this.score = score;
-    }
-
-    public ArrayList<Case[]> getListKu() {
-        return listKu;
     }
 
     public void setListKu(ArrayList<Case[]> listKu) {

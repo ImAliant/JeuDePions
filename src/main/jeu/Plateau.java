@@ -1,5 +1,6 @@
 package main.jeu;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Plateau {
@@ -7,6 +8,8 @@ public class Plateau {
     private int N; //Colonnes du plateau ( 6 pour Puissance4 | 19 pour Gomoku )
     private int M; //Lignes du plateau ( 7 pour Puissance4 | 19 pour Gomuku )
     private Case[][] cases;
+    private ArrayList<Case[]> listKu;
+    private Case[] c;
 
     Plateau(){
         Scanner scanner =new Scanner(System.in);
@@ -50,6 +53,52 @@ public class Plateau {
             System.out.println("Ce jeu n'existe pas !");
         }
     }
+    
+    public void initialisationKuplet(){
+        listKu =new ArrayList<Case[]>();
+        //Kuplets horizontaux
+        for(int i = 0; i < N; i++){
+            for(int j = 0; j < M; j++){
+                for(int loop = 0; loop < K; loop++){
+                    c[loop] = cases[i][j];
+                    i++;
+                }
+            }
+            listKu.add(c);
+        }
+        //Kuplets verticaux
+        for(int i = 0; i < N; i++){
+            for(int j = 0; j < M; j++){
+                for(int loop = 0; loop < K; loop++){
+                    c[loop] = cases[i][j];
+                    j++;
+                }
+            }
+            listKu.add(c);
+        }
+        //Kuplets HG-BD
+        for(int i = 0; i < N; i++){
+            for(int j = 0; j < M; j++){
+                for(int loop = 0; loop < K; loop++){
+                    c[loop] = cases[i][j];
+                    i++;
+                    j++;
+                }
+            }
+            listKu.add(c);
+        }
+        //Kuplets BG-HD
+        for(int i = 0; i < N; i++){
+            for(int j = 0; j < M; j++){
+                for(int loop = 0; loop < K; loop++){
+                    c[loop] = cases[i][j];
+                    i++;
+                    j--;
+                }
+            }
+            listKu.add(c);
+        }
+    }
 
     public int getK() {
         return K;
@@ -83,5 +132,7 @@ public class Plateau {
         this.cases = cases;
     }
 
-    
+    public ArrayList<Case[]> getListKu() {
+        return listKu;
+    }
 }
