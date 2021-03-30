@@ -60,8 +60,8 @@ public class Plateau {
         int loop = 0; 
         //Kuplets horizontaux
         for(int j = 0; j < M; j++){
-            for(int i = 0; i < N; i++){
-                while(loop > K){
+            for(int i = 0; i < N-K; i++){
+                while(loop < K){
                     c[loop] = cases[i][j];
                     loop++;
                 }
@@ -72,8 +72,8 @@ public class Plateau {
         }
         //Kuplets verticaux
         for(int i = 0; i < N; i++){
-            for(int j = 0; j < M; j++){
-                while(loop > K){
+            for(int j = 0; j < M-K; j++){
+                while(loop < K){
                     c[loop] = cases[i][j];
                     loop++;
                 }
@@ -83,15 +83,13 @@ public class Plateau {
             }
         }
         //Kuplets HG-BD
-        for(int i = 0; i < N; i++){
-            int x = i;
-            for(int j = 0; j < M; j++){
-                int y = j;
-                while(loop > K){
-                    c[loop] = cases[x][y];
+        for(int i = 0; i < N-K; i++){
+            for(int j = 0; j < M-K; j++){
+                while(loop < K){
+                    c[loop] = cases[i][j];
                     loop++;
-                    x++;
-                    y++;
+                    i++;
+                    j++;
                 }
                 loop = 0;
                 k =new kuplet(this, c);
@@ -99,35 +97,22 @@ public class Plateau {
             }
         }
         //Kuplets BG-HD
-        for(int i = 0; i < N; i++){
-            int x = i;
-            for(int j = M; j >= 0; j--){
-                int y = j;
-                while(loop > K){
-                    c[loop] = cases[x][y];
+        for(int i = 0; i < N-K; i++){
+            for(int j = M-1; j >= 4; j--){
+                while(loop < K){
+                    c[loop] = cases[i][j];
                     loop++;
-                    x++;
-                    y--;
+                    i++;
+                    j--;
                 }
                 loop = 0;
                 k =new kuplet(this, c);
                 listKu.add(k);
             }
         }
-        /*for(int i = 0; i > 0; i++){
-            for(int j = M; j >= 0; j--){
-                for(loop = 0; loop < K; loop++){
-                    c[loop] = cases[i][j];
-                    i++;
-                    j--;
-                }
-            }
-            k =new kuplet(this, c);
-            listKu.add(k);
-        }*/
 
-        for(int i = 0; i < cases.length; i++){
-            for(int j = 0; j < cases[i].length; j++){
+        for(int i = 0; i < N; i++){
+            for(int j = 0; j < M; j++){
                 cases[i][j].setLi(cases[i][j].initialisation(this));
             }
         }
