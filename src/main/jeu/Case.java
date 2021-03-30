@@ -10,23 +10,22 @@ public class Case {
     private int x;
     private int y;
 
-    Case(int etat, int x, int y, Plateau p){
+    Case(int etat, int x, int y, Plateau p, ArrayList<kuplet> li){
         this.x = x;
         this.y = y;
         this.etat = etat;
-    }
-    Case(int etat, int x, int y, Plateau p, ArrayList<kuplet> li){
-        this(etat, x, y, p);
         this.li = li;
     }    
 
     public ArrayList<kuplet> initialisation(Plateau p){
         li =new ArrayList<kuplet>();
         for(int loop = 0; loop < p.getListKu().size(); loop++){
-                if(p.getListKu().get(loop).getC()[loop].getX() == this.x && p.getListKu().get(loop).getC()[loop].getY() == this.y){
+            for(int loop2 = 0; loop2 < p.getK(); loop2++){
+                if(p.getListKu().get(loop).getC()[loop2].getX() == this.x && p.getListKu().get(loop).getC()[loop2].getY() == this.y){
                     kuplet k = p.getListKu().get(loop);
                     li.add(k);
                 }
+            }
         }
         return li;
     }
