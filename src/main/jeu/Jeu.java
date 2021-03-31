@@ -94,7 +94,6 @@ public class Jeu {
         }
         p.getCases()[col-1][lig-1].setEtat(tour%2 == 1 ? 'X' : '0');
         victoire(gagnant, col, lig, tour);
-        scanner.close();
     }
     
     void victoire(int gagnant, int col, int lig, int tour){

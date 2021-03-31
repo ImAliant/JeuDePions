@@ -51,7 +51,6 @@ public class Plateau {
         else{
             System.out.println("Ce jeu n'existe pas !");
         }
-        scanner.close();
 
         //LISTE DES KUPLETS DU PLATEAU
         listKu =new ArrayList<kuplet>();
