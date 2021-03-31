@@ -3,7 +3,6 @@ package main.jeu;
 import java.util.Scanner;
 
 public class Jeu {
-    private kuplet ku;
     private Plateau p;
 
     Jeu(){
@@ -191,13 +190,5 @@ public class Jeu {
             System.out.println("****FIN DE PARTIE****");
 			System.out.println("****VICTOIRE DE O****");
         }
-    }
-
-    public kuplet getKu() {
-        return ku;
-    }
-
-    public void setKu(kuplet ku) {
-        this.ku = ku;
     }
 }
