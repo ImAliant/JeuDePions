@@ -92,7 +92,7 @@ public class Jeu {
                 System.out.println("Nombre incorrect, réitérez");
             }
         }
-        p.getCases()[col-1][lig-1].setEtat(tour%2 == 1 ? 'X' : '0');
+        p.getCases()[col-1][lig-1].setEtat(tour%2 == 1 ? 1 : 2);
         victoire(gagnant, col, lig, tour);
     }
     
