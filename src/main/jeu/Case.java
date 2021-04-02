@@ -11,6 +11,7 @@ public class Case {
     private int y;
 
     Case(int etat, int x, int y, Plateau p, ArrayList<kuplet> li){
+        this.p = p;
         this.x = x;
         this.y = y;
         this.etat = etat;
