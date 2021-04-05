@@ -19,19 +19,11 @@ public class Plateau {
             K = 5;
             N = 19;
             M = 19;
-            cases =new Case[N][M];
-            for(int i = 0; i < N; i++){
-                for(int j = 0; j < M; j++){
-                    cases[i][j] =new Case(0, i, j, this, null);
-                } 
-            }
         }
         else if(scanner.nextLine().equals("Puissance4")){
             K = 4;
             N = 6;
             M = 7;
-            cases =new Case[N][M];
-            
         }
         else if(scanner.nextLine().equals("Morpion")){
             K = 3;
@@ -41,6 +33,13 @@ public class Plateau {
         else{
             System.out.println("Ce jeu n'existe pas !");
         }
+        cases =new Case[N][M];
+        for(int i = 0; i < N; i++){
+            for(int j = 0; j < M; j++){
+                cases[i][j] =new Case(0, i, j, this, null);
+            } 
+        }
+        
 
         //LISTE DES KUPLETS DU PLATEAU
         listKu =new ArrayList<kuplet>();
@@ -48,9 +47,9 @@ public class Plateau {
         kuplet k;
         int loop = 0; 
         //Kuplets horizontaux
-        for(int i = 0; i < M; i++){
-            for(int j = 0; j < N-K; j++){
-            	c =new Case[K];
+        for(int j = 0; j < M; j++){
+            for(int i = 0; i < N-K; i++){
+                c =new Case[K];
                 while(loop < K){
                     c[loop] = cases[i][j];
                     loop++;
@@ -63,7 +62,7 @@ public class Plateau {
         //Kuplets verticaux
         for(int i = 0; i < N; i++){
             for(int j = 0; j < M-K; j++){
-            	c =new Case[K];
+                c =new Case[K];
                 while(loop < K){
                     c[loop] = cases[i][j];
                     loop++;
@@ -76,7 +75,7 @@ public class Plateau {
         //Kuplets HG-BD
         for(int i = 0; i < N-K; i++){
             for(int j = 0; j < M-K; j++){
-            	c =new Case[K];
+                c =new Case[K];
                 while(loop < K){
                     c[loop] = cases[i][j];
                     loop++;
@@ -91,7 +90,7 @@ public class Plateau {
         //Kuplets BG-HD
         for(int i = 0; i < N-K; i++){
             for(int j = M-1; j >= 4; j--){
-            	c =new Case[K];
+                c =new Case[K];
                 while(loop < K){
                     c[loop] = cases[i][j];
                     loop++;
@@ -163,3 +162,6 @@ public class Plateau {
 
     
 }
+
+
+

@@ -1,4 +1,4 @@
-package main.jeu;
+package Test;
 
 import java.util.Scanner;
 public class JeuP4Test {
