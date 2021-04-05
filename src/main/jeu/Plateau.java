@@ -31,22 +31,12 @@ public class Plateau {
             N = 6;
             M = 7;
             cases =new Case[N][M];
-            for(int i = 0; i < N; i++){
-                for(int j = 0; j < M; j++){
-                    cases[i][j] =new Case(0, i, j, this, null);
-                } 
-            }
+            
         }
         else if(scanner.nextLine().equals("Morpion")){
             K = 3;
             N = 3;
             M = 3;
-            cases =new Case[N][M];
-            for(int i = 0; i < N; i++){
-                for(int j = 0; j < M; j++){
-                    cases[i][j] =new Case(0, i, j, this, null);
-                } 
-            }
         }
         else{
             System.out.println("Ce jeu n'existe pas !");
@@ -58,8 +48,9 @@ public class Plateau {
         kuplet k;
         int loop = 0; 
         //Kuplets horizontaux
-        for(int j = 0; j < M; j++){
-            for(int i = 0; i < N-K; i++){
+        for(int i = 0; i < M; i++){
+            for(int j = 0; j < N-K; j++){
+            	c =new Case[K];
                 while(loop < K){
                     c[loop] = cases[i][j];
                     loop++;
@@ -72,6 +63,7 @@ public class Plateau {
         //Kuplets verticaux
         for(int i = 0; i < N; i++){
             for(int j = 0; j < M-K; j++){
+            	c =new Case[K];
                 while(loop < K){
                     c[loop] = cases[i][j];
                     loop++;
@@ -84,6 +76,7 @@ public class Plateau {
         //Kuplets HG-BD
         for(int i = 0; i < N-K; i++){
             for(int j = 0; j < M-K; j++){
+            	c =new Case[K];
                 while(loop < K){
                     c[loop] = cases[i][j];
                     loop++;
@@ -98,6 +91,7 @@ public class Plateau {
         //Kuplets BG-HD
         for(int i = 0; i < N-K; i++){
             for(int j = M-1; j >= 4; j--){
+            	c =new Case[K];
                 while(loop < K){
                     c[loop] = cases[i][j];
                     loop++;
@@ -115,6 +109,16 @@ public class Plateau {
                 cases[i][j].setLi(cases[i][j].initialisation(this));
             }
         }
+    }
+    
+    void afficheKuplets(ArrayList<kuplet> listKu){
+        for(int i = 0; i < listKu.size(); i++){
+            System.out.print("[");
+            for(int loop = 0; loop < getK(); loop++){
+                System.out.print(listKu.get(i).getC()[loop].getX() + "," + listKu.get(i).getC()[loop].getY() + " ");
+            }
+            System.out.print("]");
+        } 
     }
 
     public int getK() {
