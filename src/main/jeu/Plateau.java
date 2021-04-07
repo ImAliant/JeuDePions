@@ -9,23 +9,25 @@ public class Plateau {
     private int M; //Lignes du plateau ( 7 pour Puissance4 | 19 pour Gomuku )
     private Case[][] cases;
     private ArrayList<kuplet> listKu;
+    private String scan;
 
     Plateau(){
         Scanner scanner =new Scanner(System.in);
 
         // Initialisation du plateau
         System.out.println("Selection de jeu : Gomoku / Puissance4 / Morpion");
-        if(scanner.nextLine().equals("Gomoku")){
+        scan = scanner.nextLine();
+        if(scan.equals("Gomoku")){
             K = 5;
             N = 19;
             M = 19;
         }
-        else if(scanner.nextLine().equals("Puissance4")){
+        else if(scan.equals("Puissance4")){
             K = 4;
             N = 6;
             M = 7;
         }
-        else if(scanner.nextLine().equals("Morpion")){
+        else if(scan.equals("Morpion")){
             K = 3;
             N = 3;
             M = 3;
