@@ -10,11 +10,8 @@ public class Plateau {
     private Case[][] cases;
     private ArrayList<kuplet> listKu;
     private String scan;
-    //private Joueur[] joueurs =new Joueur[2];
 
-    Plateau(/*Joueur j1, Joueur j2*/){
-        /*joueurs[0] = j1;
-        joueurs[1] = j2;*/
+    Plateau(){
 
         Scanner scanner =new Scanner(System.in);
 
