@@ -10,8 +10,12 @@ public class Plateau {
     private Case[][] cases;
     private ArrayList<kuplet> listKu;
     private String scan;
+    //private Joueur[] joueurs =new Joueur[2];
 
-    Plateau(){
+    Plateau(/*Joueur j1, Joueur j2*/){
+        /*joueurs[0] = j1;
+        joueurs[1] = j2;*/
+
         Scanner scanner =new Scanner(System.in);
 
         // Initialisation du plateau
@@ -35,6 +39,7 @@ public class Plateau {
         else{
             System.out.println("Ce jeu n'existe pas !");
         }
+
         cases =new Case[N][M];
         for(int i = 0; i < N; i++){
             for(int j = 0; j < M; j++){
@@ -55,8 +60,10 @@ public class Plateau {
                 while(loop < K){
                     c[loop] = cases[i][j];
                     loop++;
+                    i++;
                 }
                 loop = 0;
+                i -= K;
                 k =new kuplet(this, c);
                 listKu.add(k);
             }
@@ -68,8 +75,10 @@ public class Plateau {
                 while(loop < K){
                     c[loop] = cases[i][j];
                     loop++;
+                    j++;
                 }
                 loop = 0;
+                j -= K;
                 k =new kuplet(this, c);
                 listKu.add(k);
             }
@@ -85,6 +94,8 @@ public class Plateau {
                     j++;
                 }
                 loop = 0;
+                i -= K;
+                j -= K;
                 k =new kuplet(this, c);
                 listKu.add(k);
             }
@@ -100,10 +111,14 @@ public class Plateau {
                     j--;
                 }
                 loop = 0;
+                i -= K;
+                j += K;
                 k =new kuplet(this, c);
                 listKu.add(k);
             }
         }
+
+        //afficheKuplets(listKu);
 
         for(int i = 0; i < N; i++){
             for(int j = 0; j < M; j++){
@@ -111,7 +126,7 @@ public class Plateau {
             }
         }
     }
-    
+
     void afficheKuplets(ArrayList<kuplet> listKu){
         for(int i = 0; i < listKu.size(); i++){
             System.out.print("[");
@@ -162,8 +177,7 @@ public class Plateau {
         this.listKu = listKu;
     }
 
-    
+    public String getScan() {
+        return scan;
+    }
 }
-
-
-
