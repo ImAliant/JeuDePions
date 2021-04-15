@@ -16,6 +16,7 @@ public class Case {
         this.y = y;
         this.etat = etat;
         this.li = li;
+        this.score = 1;
     }    
 
     public ArrayList<kuplet> initialisation(Plateau p){
@@ -29,6 +30,10 @@ public class Case {
             }
         }
         return li;
+    }
+
+    public int getIntEtat(){
+        return etat;
     }
 
     public char getEtat() {
@@ -84,7 +89,5 @@ public class Case {
     public void setScore(int score) {
         this.score = score;
     }
-    
-
-    
+      
 }
