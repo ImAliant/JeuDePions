@@ -36,7 +36,7 @@ public class Jeu {
             tourJoueur %= 2;
             tour++;
 
-            //p.afficheKuplets(p.getListKu());
+            p.afficheKuplets(p.getListKu());
         }
 
         System.out.println("FIN DE PARTIE");

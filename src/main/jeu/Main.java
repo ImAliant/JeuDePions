@@ -21,7 +21,7 @@ public class Main {
         }
         System.out.println();
 
-        Jeu j =new Jeu(new Humain(nom1, 1), new Humain(nom2, 2));
+        Jeu j =new Jeu(new Humain(nom1, 1), new Humain(nom2, 2)/*new Ordinateur(2)*/);
         j.joue();
     }
 }

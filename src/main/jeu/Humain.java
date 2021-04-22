@@ -38,6 +38,13 @@ public class Humain extends Joueur{
                 lig--;
             }
             p.getCases()[col-1][lig].setEtat(this.getCouleur());
+            for(int i = 0; i < p.getListKu().size(); i++){
+                for(int loop = 0; loop < p.getK(); loop++){
+                    if(p.getListKu().get(i).getC()[loop].getX() == col && p.getListKu().get(i).getC()[loop].getY() == lig){
+                        p.getListKu().get(i).score();
+                    }
+                }
+            }
         }
         else if(p.getScan().equals("Morpion")){
             int col = 0;
@@ -70,6 +77,13 @@ public class Humain extends Joueur{
                 }
             }
             p.getCases()[col-1][lig-1].setEtat(this.getCouleur());
+            for(int i = 0; i < p.getListKu().size(); i++){
+                for(int loop = 0; loop < p.getK(); loop++){
+                    if(p.getListKu().get(i).getC()[loop].getX() == col && p.getListKu().get(i).getC()[loop].getY() == lig){
+                        p.getListKu().get(i).score();
+                    }
+                }
+            }
         }
         else{
             int col = 0;
@@ -101,6 +115,13 @@ public class Humain extends Joueur{
                 }
             }
             p.getCases()[col-1][lig-1].setEtat(this.getCouleur());
+            for(int i = 0; i < p.getListKu().size(); i++){
+                for(int loop = 0; loop < p.getK(); loop++){
+                    if(p.getListKu().get(i).getC()[loop].getX() == col && p.getListKu().get(i).getC()[loop].getY() == lig){
+                        p.getListKu().get(i).score();
+                    }
+                }
+            }
         }
     }
 
