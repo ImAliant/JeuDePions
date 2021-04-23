@@ -7,7 +7,8 @@ public class kuplet{
 
     public kuplet(Plateau p, Case[] c){
         this.p = p;
-        this.c = c;        
+        this.c = c;
+        score=7;
     }
 
     public Plateau getP() {
@@ -47,31 +48,37 @@ public class kuplet{
     public int score() {
     	int x=countEtat('X');
     	int y=countEtat('O');
-    	if(x>=1 && y>=1 || x==0 && y==0) {
+    	if(x>=1 && y>=1) {
     		score=0;
+    		return score;
         }
     	switch(x) {
     	case 0:
     		if(y==1) {
-    			score=5;
+    			score=35;
     		}
     		else if(y==2) {
-    			score=10;
+    			score=800;
     		}
     		else if(y==3) {
-    			score=15;
+    			score=15000;
     		}
     		else if(y==4) {
-    			score=20;
+    			score=800000;
     		}
+    		break;
     	case 1:
-    		score=3;
+    		score=15;
+    		break;
     	case 2:
-    		score=8;
+    		score=400;
+    		break;
     	case 3:
-    		score=13;
+    		score=1800;
+    		break;
     	case 4:
-    		score=18;
+    		score=10000;
+    		break;
     	}
     	return score;
     }
