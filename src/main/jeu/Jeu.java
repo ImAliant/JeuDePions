@@ -13,7 +13,7 @@ public class Jeu {
             affichagePlateau(i, p);
             placementJeton(gagnant, i , p);
             i++;
-        } 
+        }
     }
     
     void affichagePlateau(int tour, Plateau p){
