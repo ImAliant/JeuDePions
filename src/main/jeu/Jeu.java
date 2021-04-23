@@ -61,10 +61,5 @@ public class Jeu {
     public Joueur[] getJoueurs() {
         return joueurs;
     }
-
-    public void setJoueurs(Joueur[] joueurs) {
-        this.joueurs = joueurs;
-    }
-
 }
 

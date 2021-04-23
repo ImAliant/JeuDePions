@@ -40,7 +40,7 @@ public class Humain extends Joueur{
             p.getCases()[col-1][lig].setEtat(this.getCouleur());
             for(int i = 0; i < p.getListKu().size(); i++){
                 for(int loop = 0; loop < p.getK(); loop++){
-                    if(p.getListKu().get(i).getC()[loop].getX() == col && p.getListKu().get(i).getC()[loop].getY() == lig){
+                    if(p.getListKu().get(i).getC()[loop].getX() == col-1 && p.getListKu().get(i).getC()[loop].getY() == lig){
                         p.getListKu().get(i).score();
                     }
                 }
@@ -79,7 +79,7 @@ public class Humain extends Joueur{
             p.getCases()[col-1][lig-1].setEtat(this.getCouleur());
             for(int i = 0; i < p.getListKu().size(); i++){
                 for(int loop = 0; loop < p.getK(); loop++){
-                    if(p.getListKu().get(i).getC()[loop].getX() == col && p.getListKu().get(i).getC()[loop].getY() == lig){
+                    if(p.getListKu().get(i).getC()[loop].getX() == col-1 && p.getListKu().get(i).getC()[loop].getY() == lig-1){
                         p.getListKu().get(i).score();
                     }
                 }
@@ -117,7 +117,7 @@ public class Humain extends Joueur{
             p.getCases()[col-1][lig-1].setEtat(this.getCouleur());
             for(int i = 0; i < p.getListKu().size(); i++){
                 for(int loop = 0; loop < p.getK(); loop++){
-                    if(p.getListKu().get(i).getC()[loop].getX() == col && p.getListKu().get(i).getC()[loop].getY() == lig){
+                    if(p.getListKu().get(i).getC()[loop].getX() == col-1 && p.getListKu().get(i).getC()[loop].getY() == lig-1){
                         p.getListKu().get(i).score();
                     }
                 }
