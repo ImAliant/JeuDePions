@@ -14,7 +14,7 @@ public class kuplet{
     public int score() {
     	int x=countEtat('X');
     	int y=countEtat('O');
-    	if(x>=1 && y>=1 || x==0 && y==0) {
+    	if(x>=1 && y>=1) {
     		score=0;
             return score;
         }
