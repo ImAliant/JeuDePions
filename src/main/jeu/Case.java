@@ -89,5 +89,13 @@ public class Case {
     public void setScore(int score) {
         this.score = score;
     }
+    
+    public int score() {
+    	int cpt=0;
+    	for(int i=0;i<li.size();i++) {
+    		cpt+=li.get(i).getScore();
+    	}
+    	return cpt;
+    }
       
 }
