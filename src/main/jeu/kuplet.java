@@ -19,34 +19,42 @@ public class kuplet{
             return score;
         }
     	switch(x) {
-    	case 0:
-    		if(y==1) {
-    			score=35;
+			case 0:
+    			if(y==1) {
+    				score=35;
+					break;
+    			}
+    			else if(y==2) {
+    				score=800;
+					break;
+    			}
+    			else if(y==3) {
+    				score=15000;
+					break;
+    			}
+    			else if(y==4) {
+    				score=800000;
+					break;
+    			}
+    		case 1:
+    			score=15;
+				break;
+    		case 2:
+    			score=400;
+				break;
+    		case 3:
+    			score=1800;
+				break;
+    		case 4:
+    			score=100000;
+				break;
     		}
-    		else if(y==2) {
-    			score=800;
-    		}
-    		else if(y==3) {
-    			score=15000;
-    		}
-    		else if(y==4) {
-    			score=800000;
-    		}
-    	case 1:
-    		score=15;
-    	case 2:
-    		score=400;
-    	case 3:
-    		score=1800;
-    	case 4:
-    		score=100000;
-    	}
     	return score;
     }
 
     public int countEtat(char etat) {
     	int cpt=0;
-    	for(int i=0;i<c.length;i++) {
+    	for(int i=0;i<getC().length; i++) {
     		if(c[i].getEtat()==etat) {
     			cpt++;
     		}
