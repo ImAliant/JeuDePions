@@ -95,7 +95,8 @@ public class Case {
     	for(int i=0;i<li.size();i++) {
     		cpt+=li.get(i).getScore();
     	}
-    	return cpt;
+    	score=cpt;
+    	return score;
     }
       
 }
