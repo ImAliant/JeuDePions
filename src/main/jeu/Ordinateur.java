@@ -89,7 +89,7 @@ public class Ordinateur extends Joueur{
         Random random =new Random();
 
         for(int i = 0; i < p.getListKu().size()-1; i++){
-            if(p.getListKu().get(i+1).getScore() >= p.getListKu().get(i).getScore())
+            if(p.getListKu().get(i+1).getScore() > p.getListKu().get(i).getScore())
                 maxScore = p.getListKu().get(i+1).getScore();
         }
         ArrayList<kuplet> listKuMAXScore =new ArrayList<kuplet>();
