@@ -1,4 +1,4 @@
-package main.jeu;
+package Test;
 
 public class PlateauTest {
     
