@@ -13,15 +13,7 @@ public class Main {
         }
         System.out.println();
 
-        /*System.out.println("Second joueur : Quel est votre nom ?");
-        String nom2 = scanner.nextLine();
-
-        for(int i = 0; i < nom1.length(); i++){
-            System.out.print('-');
-        }
-        System.out.println();*/
-
-        Jeu j =new Jeu(new Humain(nom1, 1), /*new Humain(nom2, 2)*/new Ordinateur(2));
+        Jeu j =new Jeu(new Humain(nom1, 1), new Ordinateur(2));
         j.joue();
     }
 }

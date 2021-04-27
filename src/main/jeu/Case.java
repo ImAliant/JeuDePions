@@ -32,6 +32,19 @@ public class Case {
         return li;
     }
 
+    public int score(){
+        if(this.etat != 0)
+            score = 0;
+        else{
+            int scr = 0;
+            for(int i = 0; i < li.size(); i++){
+                scr += li.get(i).getScore();
+            }
+            score = scr;
+        }
+        return score;
+    }
+
     public int getIntEtat(){
         return etat;
     }
@@ -88,15 +101,5 @@ public class Case {
 
     public void setScore(int score) {
         this.score = score;
-    }
-    
-    public int score() {
-    	int cpt=0;
-    	for(int i=0;i<li.size();i++) {
-    		cpt+=li.get(i).getScore();
-    	}
-    	score=cpt;
-    	return score;
-    }
-      
+    }  
 }
