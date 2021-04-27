@@ -60,5 +60,6 @@ public class Main {
                 Jeu j4 =new Jeu(new Ordinateur(1), new Ordinateur(2));
 				j4.joue();
 				break;
+        }
     }
 }
