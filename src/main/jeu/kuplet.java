@@ -46,40 +46,25 @@ public class kuplet{
     }
     
     public int score() {
-    	int x=countEtat('X');
-    	int y=countEtat('O');
-    	if(x>=1 && y>=1) {
-    		score=0;
-    		return score;
+        int x=countEtat('X');
+        int y=countEtat('O');
+        if(x>=1 && y>=1) {
+            score=0;
+            return score;
         }
-    	switch(x) {
-    	case 0:
-    		if(y==1) {
-    			score=35;
-    		}
-    		else if(y==2) {
-    			score=800;
-    		}
-    		else if(y==3) {
-    			score=15000;
-    		}
-    		else if(y==4) {
-    			score=800000;
-    		}
-    		break;
-    	case 1:
-    		score=15;
-    		break;
-    	case 2:
-    		score=400;
-    		break;
-    	case 3:
-    		score=1800;
-    		break;
-    	case 4:
-    		score=10000;
-    		break;
-    	}
-    	return score;
+        int i=1;
+        if(x>=1 && y==0) {
+            while(i!=x+1) {
+                i++;
+                score+=500;
+            }
+        }
+        else if(x==0 && y>=1) {
+            while(i!=y+1) {
+                i++;
+                score+=1000;
+            }
+        }
+        return score;
     }
 }
