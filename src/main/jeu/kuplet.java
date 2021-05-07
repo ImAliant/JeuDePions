@@ -52,6 +52,29 @@ public class kuplet{
     	return score;
     }
 
+	public int score2() {
+        int x=countEtat('X');
+        int y=countEtat('O');
+        if(x>=1 && y>=1) {
+            score=0;
+            return score;
+        }
+        int i=1;
+        if(x>=1 && y==0) {
+            while(i!=x+1) {
+                i++;
+                score+=580;
+            }
+        }
+        else if(x==0 && y>=1) {
+            while(i!=y+1) {
+                i++;
+                score+=1035;
+            }
+        }
+        return score;
+    }
+
     public int countEtat(char etat) {
     	int cpt=0;
     	for(int i=0;i<getC().length; i++) {

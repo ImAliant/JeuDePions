@@ -8,7 +8,9 @@ public class Main {
         System.out.println("Plusieurs modes de jeux sont disponibles : JcJ, JcO, OcJ, OcO.");
         System.out.println("Sélectionnez un mode de jeu !");
         
+        System.out.println();
         String repMode = scanner.nextLine();
+        System.out.println();
         String nom1 = "";
 
         switch (repMode) {
@@ -20,6 +22,7 @@ public class Main {
                     System.out.print('-');
                 }
                 System.out.println();
+                System.out.println();
 
                 System.out.println("Second joueur : Quel est votre nom ?");
                 String nom2 = scanner.nextLine();
@@ -27,6 +30,7 @@ public class Main {
                 for(int i = 0; i < nom1.length(); i++){
                     System.out.print('-');
                 }
+                System.out.println();
                 System.out.println();
 
                 Jeu j1 =new Jeu(new Humain(nom1, 1), new Humain(nom2, 2));

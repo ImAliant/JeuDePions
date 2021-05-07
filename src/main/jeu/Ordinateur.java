@@ -1,6 +1,10 @@
 package main.jeu;
 
+import java.util.ArrayList;
+import java.util.Random;
+
 public class Ordinateur extends Joueur{
+
     public Ordinateur(int couleur){
         super("L'ordinateur", couleur);
     }
@@ -78,7 +82,7 @@ public class Ordinateur extends Joueur{
                 
             String sCol = chiffreVersLettre(col+1);
 
-            if(p.getScan().equals("Morpion"))
+            if(p.getScan().equals("Morpion") || p.getScan().equals("ConfigPerso"))
                 System.out.println("L'ordinateur joue en " + (col+1) + ", " + (lig+1) + ".");
             else{
                 System.out.println("L'ordinateur joue en " + sCol + ", " + (lig+1) + ".");
@@ -103,6 +107,16 @@ public class Ordinateur extends Joueur{
                     caseMaxScore = p.getCases()[i][j];
             }
         }
+        ArrayList<Case> casesMaxScore =new ArrayList<Case>();
+        for(int i = 0; i < p.getCases().length-1; i++){
+            for(int j = 0; j < p.getCases()[i].length; j++){
+                if(p.getCases()[i][j] == caseMaxScore){
+                    casesMaxScore.add(p.getCases()[i][j]);
+                }
+            }
+        }
+        int index = new Random().nextInt(casesMaxScore.size());
+        caseMaxScore = casesMaxScore.get(index);
         return caseMaxScore;
     }
 }

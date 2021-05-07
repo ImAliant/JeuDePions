@@ -51,7 +51,7 @@ public class Humain extends Joueur{
                 }
             }
         }
-        else if(p.getScan().equals("Morpion")){
+        else if(p.getScan().equals("Morpion") || p.getScan().equals("ConfigPerso")){
             int col = 0;
             int lig = 0;
         
