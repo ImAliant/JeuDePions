@@ -52,19 +52,13 @@ public class kuplet{
             score=0;
             return score;
         }
-        int i=1;
         if(x>=1 && y==0) {
-            while(i!=x+1) {
-                i++;
-                score+=500;
-            }
+            score=x*580;
         }
         else if(x==0 && y>=1) {
-            while(i!=y+1) {
-                i++;
-                score+=1000;
-            }
+            score=y*1035;
         }
         return score;
     }
+
 }
