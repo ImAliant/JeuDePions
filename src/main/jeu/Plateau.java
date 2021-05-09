@@ -112,13 +112,15 @@ public class Plateau {
         for(int i = 0; i < listKu.size(); i++){
             System.out.print("[");
             for(int loop = 0; loop < getK(); loop++){
-                System.out.print(listKu.get(i).getC()[loop].getX() + "," + listKu.get(i).getC()[loop].getY() + " ");
+                System.out.print(listKu.get(i).getC()[loop].getX() + "," + listKu.get(i).getC()[loop].getY() + " score : " + listKu.get(i).getC()[loop].getScore() + " | ");
             }
             System.out.print("]" + " score : " + listKu.get(i).getScore());
             System.out.println();
         } 
         System.out.println();
     }
+
+    
 
     void initKupletPlateau(ArrayList<kuplet> listKu){
         Case[] c =new Case[K];
