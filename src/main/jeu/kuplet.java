@@ -11,6 +11,22 @@ public class kuplet{
         this.score = 7;
     }
 
+    public int score() {
+        int x=countEtat('X');
+        int y=countEtat('O');
+        if(x>=1 && y>=1) {
+            score=0;
+            return score;
+        }
+        if(x>=1 && y==0) {
+            score=x*1035;
+        }
+        else if(x==0 && y>=1) {
+            score=y*580;
+        }
+        return score;
+    }
+
     public int countEtat(char etat) {
     	int cpt=0;
     	for(int i=0;i<getC().length; i++) {
