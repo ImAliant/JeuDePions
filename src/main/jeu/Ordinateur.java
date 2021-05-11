@@ -1,6 +1,10 @@
 package main.jeu;
 
+import java.util.ArrayList;
+import java.util.Random;
+
 public class Ordinateur extends Joueur{
+
     public Ordinateur(int couleur){
         super("L'ordinateur", couleur);
     }
@@ -36,19 +40,6 @@ public class Ordinateur extends Joueur{
             }
             p.getCases()[col][lig].setEtat(this.getCouleur());
             System.out.println("L'ordinateur joue en " + (col+1) +".");
-                    
-            for(int i = 0; i < p.getListKu().size(); i++){
-                for(int loop = 0; loop < p.getK(); loop++){
-                    if(p.getListKu().get(i).getC()[loop].getX() == col && p.getListKu().get(i).getC()[loop].getY() == lig){
-                        p.getListKu().get(i).score();    
-                    }
-                }
-            }
-            for(int i = 0; i < p.getCases().length; i++){
-                for(int j = 0; j < p.getCases()[i].length; j++){
-                    p.getCases()[i][j].score();
-                }
-            }
         }
         else{
             int col = 0;
@@ -61,7 +52,7 @@ public class Ordinateur extends Joueur{
                 col = caseMaxScore.getX();
                 lig = caseMaxScore.getY();
 
-                if((col >= 1 && col <= p.getN()) && (lig >=1 && lig <= p.getM())){
+                if((col >= 0 && col <= p.getN()) && (lig >=0 && lig <= p.getM())){
                     if(p.getCases()[col][lig].getEtat() == '.'){
                         placement = true;
                     }
@@ -78,31 +69,37 @@ public class Ordinateur extends Joueur{
                 
             String sCol = chiffreVersLettre(col+1);
 
-            if(p.getScan().equals("Morpion"))
+            if(p.getScan().equals("Morpion") || p.getScan().equals("ConfigPerso"))
                 System.out.println("L'ordinateur joue en " + (col+1) + ", " + (lig+1) + ".");
             else{
                 System.out.println("L'ordinateur joue en " + sCol + ", " + (lig+1) + ".");
-            }
-
-            for(int i = 0; i < p.getListKu().size(); i++){
-                p.getListKu().get(i).score();
-            }
-            for(int i = 0; i < p.getCases().length; i++){
-                for(int j = 0; j < p.getCases()[i].length; j++){
-                    p.getCases()[i][j].score();
-                }
             }
         }
     }
 
     public Case caseMaxScore(Plateau p){
         Case caseMaxScore = p.getCases()[0][0];
+        int scoreMax = p.getCases()[0][0].getScore();
         for(int i = 0; i < p.getCases().length-1; i++){
-            for(int j = 0; j < p.getCases()[i].length; j++){
-                if(caseMaxScore.getScore() < p.getCases()[i][j].getScore())
+            for(int j = 0; j < p.getCases()[i].length-1; j++){
+                if(p.getCases()[i][j].getScore() > scoreMax){
+                    scoreMax = p.getCases()[i][j].getScore();
                     caseMaxScore = p.getCases()[i][j];
+                }
             }
         }
+        ArrayList<Case> casesMaxScore =new ArrayList<Case>();
+        for(int i = 0; i < p.getCases().length-1; i++){
+            for(int j = 0; j < p.getCases()[i].length; j++){
+                if(p.getCases()[i][j].getScore() == scoreMax){
+                    casesMaxScore.add(p.getCases()[i][j]);
+                }
+            }
+        }
+        int index = new Random().nextInt(casesMaxScore.size());
+        caseMaxScore = casesMaxScore.get(index);
+        
+        System.out.println(scoreMax);
         return caseMaxScore;
     }
 }

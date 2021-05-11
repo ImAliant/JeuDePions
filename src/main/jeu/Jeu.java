@@ -20,6 +20,7 @@ public class Jeu {
         while(vainqueur == -1){
             System.out.println("Tour " + tour + ", Etat du plateau :");
             System.out.println();
+
             joueurs[tourJoueur].joue(p);
             p.affichagePlateau();
 
@@ -35,6 +36,15 @@ public class Jeu {
             tourJoueur++;
             tourJoueur %= 2;
             tour++;
+
+            for(int i = 0; i < p.getListKu().size(); i++){
+                p.getListKu().get(i).score();
+            }
+            for(int i = 0; i < p.getCases().length; i++){
+                for(int j = 0; j < p.getCases()[i].length; j++){
+                    p.getCases()[i][j].score();
+                }
+            }
 
             //p.afficheKuplets(p.getListKu());
         }

@@ -4,40 +4,89 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Plateau {
-    private int K; //Alignement requis ( 4 pour Puissance4 | 5 pour Gomoku )
+    private int K; //Alignement requis   ( 4 pour Puissance4 |  5 pour Gomoku )
     private int N; //Colonnes du plateau ( 7 pour Puissance4 | 19 pour Gomoku )
-    private int M; //Lignes du plateau ( 6 pour Puissance4 | 19 pour Gomuku )
+    private int M; //Lignes du plateau   ( 6 pour Puissance4 | 19 pour Gomuku )
     private Case[][] cases;
     private ArrayList<kuplet> listKu;
     private String scan;
+    private Scanner scanner =new Scanner(System.in);
 
     Plateau(){
         initJeu();
     }
 
     void initJeu(){
-        Scanner scanner =new Scanner(System.in);
+        System.out.println("Souhaitez-vous jouer à un jeu prédéfini (1) ou choisir votre configuration de plateau (2) ? (1 ou 2)");
+        String repChoix = scanner.nextLine();
 
-        // Initialisation du plateau
-        System.out.println("Selection de jeu : Gomoku / Puissance4 / Morpion");
-        scan = scanner.nextLine();
-        if(scan.equals("Gomoku")){
-            K = 5;
-            N = 19;
-            M = 19;
+        System.out.println();
+
+        if(repChoix.equals("1")){
+            // Initialisation du plateau
+            boolean choixJeu = false;
+            while(!choixJeu){
+                System.out.println("Selection de jeu : Gomoku / Puissance4 / Morpion");
+                scan = scanner.nextLine();
+                if(scan.equals("Gomoku")){
+                    K = 5;
+                    N = 19;
+                    M = 19;
+                    choixJeu = true;
+                }
+                else if(scan.equals("Puissance4")){
+                    K = 4;
+                    N = 7;
+                    M = 6;
+                    choixJeu = true;
+                }
+                else if(scan.equals("Morpion")){
+                    K = 3;
+                    N = 3;
+                    M = 3;
+                    choixJeu = true;
+                }
+                else{
+                    System.out.println("Ce jeu n'existe pas !");
+                    choixJeu = false;
+                }
+            }
         }
-        else if(scan.equals("Puissance4")){
-            K = 4;
-            N = 7;
-            M = 6;
-        }
-        else if(scan.equals("Morpion")){
-            K = 3;
-            N = 3;
-            M = 3;
-        }
-        else{
-            System.out.println("Ce jeu n'existe pas !");
+        else if(repChoix.equals("2")){
+            scan = "ConfigPerso";
+            System.out.println("--CONFIGURATIONS PLATEAU--");
+            
+            boolean choixConfig = false;
+            int repCol = 0;
+            int repLig = 0;
+            int repAlign = 0;
+
+            while(!choixConfig){
+                System.out.println("Nombres de colonnes ( min 3 ) :");
+                repCol = scanner.nextInt();
+
+                System.out.println();
+
+                System.out.println("Nombres de lignes ( min 3 ) :");
+                repLig = scanner.nextInt();
+
+                System.out.println();
+
+                System.out.println("Alignement requis pour la victoire ( min 3 ) :");
+                repAlign = scanner.nextInt();
+
+                System.out.println();
+
+                if(repCol < 3 || repLig < 3 || repAlign < 3){
+                    choixConfig = false;
+                }
+                else{
+                    choixConfig = true;
+                }
+            }
+            K = repAlign;
+            N = repCol;
+            M = repLig;
         }
 
         cases =new Case[N][M];
@@ -52,23 +101,23 @@ public class Plateau {
         listKu =new ArrayList<kuplet>();
         initKupletPlateau(listKu);
 
-        /*afficheKuplets(listKu);
-        System.out.println(listKu.size());*/
-
         initKupletCases(this);
+
     }
 
     void afficheKuplets(ArrayList<kuplet> listKu){
         for(int i = 0; i < listKu.size(); i++){
             System.out.print("[");
             for(int loop = 0; loop < getK(); loop++){
-                System.out.print(listKu.get(i).getC()[loop].getX() + "," + listKu.get(i).getC()[loop].getY() + " ");
+                System.out.print(listKu.get(i).getC()[loop].getX() + "," + listKu.get(i).getC()[loop].getY() + " score : " + listKu.get(i).getC()[loop].getScore() + " | ");
             }
             System.out.print("]" + " score : " + listKu.get(i).getScore());
             System.out.println();
         } 
         System.out.println();
     }
+
+    
 
     void initKupletPlateau(ArrayList<kuplet> listKu){
         Case[] c =new Case[K];
@@ -123,7 +172,7 @@ public class Plateau {
         }
         //Kuplets BG-HD
         for(int i = 0; i <= N-K; i++){
-            for(int j = M-1; j >= 4; j--){
+            for(int j = M-1; j >= K-1; j--){
                 c =new Case[K];
                 while(loop < K){
                     c[loop] = cases[i][j];
@@ -150,7 +199,7 @@ public class Plateau {
 
     void affichagePlateau(){
         System.out.println();
-        if(scan.equals("Gomoku")){
+        if(scan.equals("Gomoku") || scan.equals("ConfigPerso")){
             System.out.print("    ");
             char ascii = 65;
             int a = 65;
@@ -171,14 +220,14 @@ public class Plateau {
                 System.out.print(i + "  ");
         }
         System.out.println();
-        if(scan.equals("Gomoku") || scan.equals("Morpion"))
+        if(scan.equals("Gomoku") || scan.equals("Morpion") || scan.equals("ConfigPerso"))
             System.out.print("  ");
         for (int loop = 0; loop < N + 2 + 2 * N; loop++)
 			System.out.print('-');
         System.out.println();
         
         int compt = 1;
-        if(scan.equals("Gomoku")){
+        if(scan.equals("Gomoku") || scan.equals("ConfigPerso")){
             for (int y = 0; y < M; y++) {
                 System.out.print(compt);
                 compt++;
@@ -209,7 +258,7 @@ public class Plateau {
                 System.out.println();
             }
         }
-        else{
+        else if(scan.equals("Morpion")){
             for (int y = 0; y < M; y++) {
                 System.out.print(compt);
                 compt++;
@@ -221,7 +270,7 @@ public class Plateau {
                 System.out.println();
             }
         }
-        if(scan.equals("Gomoku") || scan.equals("Morpion"))
+        if(scan.equals("Gomoku") || scan.equals("Morpion") || scan.equals("ConfigPerso"))
             System.out.print("  ");
         for (int loop = 0; loop < N + 2 + 2 * N; loop++)
 			System.out.print('-');

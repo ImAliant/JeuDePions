@@ -38,20 +38,8 @@ public class Humain extends Joueur{
                 lig--;
             }
             p.getCases()[col-1][lig].setEtat(this.getCouleur());
-            for(int i = 0; i < p.getListKu().size(); i++){
-                for(int loop = 0; loop < p.getK(); loop++){
-                    if(p.getListKu().get(i).getC()[loop].getX() == col-1 && p.getListKu().get(i).getC()[loop].getY() == lig){
-                        p.getListKu().get(i).score();
-                    }
-                }
-            }
-            for(int i = 0; i < p.getCases().length; i++){
-                for(int j = 0; j < p.getCases()[i].length; j++){
-                    p.getCases()[i][j].score();
-                }
-            }
         }
-        else if(p.getScan().equals("Morpion")){
+        else if(p.getScan().equals("Morpion") || p.getScan().equals("ConfigPerso")){
             int col = 0;
             int lig = 0;
         
@@ -82,14 +70,6 @@ public class Humain extends Joueur{
                 }
             }
             p.getCases()[col-1][lig-1].setEtat(this.getCouleur());
-            for(int i = 0; i < p.getListKu().size(); i++){
-                p.getListKu().get(i).score();
-            }
-            for(int i = 0; i < p.getCases().length; i++){
-                for(int j = 0; j < p.getCases()[i].length; j++){
-                    p.getCases()[i][j].score();
-                }
-            }
         }
         else{
             int col = 0;
@@ -121,18 +101,6 @@ public class Humain extends Joueur{
                 }
             }
             p.getCases()[col-1][lig-1].setEtat(this.getCouleur());
-            for(int i = 0; i < p.getListKu().size(); i++){
-                for(int loop = 0; loop < p.getK(); loop++){
-                    if(p.getListKu().get(i).getC()[loop].getX() == col-1 && p.getListKu().get(i).getC()[loop].getY() == lig-1){
-                        p.getListKu().get(i).score();
-                    }
-                }
-            }
-            for(int i = 0; i < p.getCases().length; i++){
-                for(int j = 0; j < p.getCases()[i].length; j++){
-                    p.getCases()[i][j].score();
-                }
-            }
         }
     }
 

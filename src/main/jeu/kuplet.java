@@ -12,44 +12,27 @@ public class kuplet{
     }
 
     public int score() {
-    	int x=countEtat('X');
-    	int y=countEtat('O');
-    	if(x>=1 && y>=1) {
-    		score=0;
+        int x=countEtat('X');
+        int y=countEtat('O');
+        if(x>=1 && y>=1) {
+            score=0;
             return score;
         }
-    	switch(x) {
-			case 0:
-    			if(y==1) {
-    				score=35;
-					break;
-    			}
-    			else if(y==2) {
-    				score=800;
-					break;
-    			}
-    			else if(y==3) {
-    				score=15000;
-					break;
-    			}
-    			else if(y==4) {
-    				score=800000;
-					break;
-    			}
-    		case 1:
-    			score=15;
-				break;
-    		case 2:
-    			score=400;
-				break;
-    		case 3:
-    			score=1800;
-				break;
-    		case 4:
-    			score=100000;
-				break;
-    		}
-    	return score;
+        if(x==0 && y>=1){
+            for(int i = 1; i < p.getK(); i++){
+                if(y==i){
+                    score = (int) (35*Math.pow(10, y));
+                }
+            }
+        }
+        else if(x>=1 && y==0){
+            for(int i = 1; i < p.getK(); i++){
+                if(x==i){
+                    score = (int) (15*Math.pow(10, x));
+                }
+            }
+        }
+        return score;
     }
 
     public int countEtat(char etat) {
