@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Main {
     protected static Scanner scanner =new Scanner(System.in);
     public static void main(String[] args){
-        System.out.println("Plusieurs modes de jeux sont disponibles : JcJ, JcO.");
+        System.out.println("Plusieurs modes de jeux sont disponibles : JcJ, JcO, OcJ.");
         System.out.println("Sélectionnez un mode de jeu !");
         
         System.out.println();
@@ -48,6 +48,18 @@ public class Main {
 
                 Jeu j2 =new Jeu(new Humain(nom1, 1), new Ordinateur(2));
                 j2.joue();
+                break;
+            case "OcJ":
+                System.out.println("Quel est votre nom ?");
+                nom1 = scanner.nextLine();
+
+                for(int i = 0; i < nom1.length(); i++){
+                    System.out.print('-');
+                }
+                System.out.println();
+
+                Jeu j3 =new Jeu(new Ordinateur(2), new Humain(nom1, 1));
+                j3.joue();
                 break;
         }
     }

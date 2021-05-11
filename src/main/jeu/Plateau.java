@@ -101,9 +101,6 @@ public class Plateau {
         listKu =new ArrayList<kuplet>();
         initKupletPlateau(listKu);
 
-        /*afficheKuplets(listKu);
-        System.out.println(listKu.size());*/
-
         initKupletCases(this);
 
     }
@@ -202,7 +199,7 @@ public class Plateau {
 
     void affichagePlateau(){
         System.out.println();
-        if(scan.equals("Gomoku")){
+        if(scan.equals("Gomoku") || scan.equals("ConfigPerso")){
             System.out.print("    ");
             char ascii = 65;
             int a = 65;
@@ -212,7 +209,7 @@ public class Plateau {
                 System.out.print(lettre + "  ");
             }
         }
-        else if(scan.equals("Morpion") || scan.equals("ConfigPerso")){
+        else if(scan.equals("Morpion")){
             System.out.print("    ");
             for(int i = 1; i <= N; i++)
                 System.out.print(i + "  ");
@@ -230,7 +227,7 @@ public class Plateau {
         System.out.println();
         
         int compt = 1;
-        if(scan.equals("Gomoku")){
+        if(scan.equals("Gomoku") || scan.equals("ConfigPerso")){
             for (int y = 0; y < M; y++) {
                 System.out.print(compt);
                 compt++;
@@ -263,18 +260,6 @@ public class Plateau {
         }
         else if(scan.equals("Morpion")){
             for (int y = 0; y < M; y++) {
-                System.out.print(compt);
-                compt++;
-                System.out.print(" |");
-                for (int x = 0; x < N; x++) {
-                    System.out.print(" " + cases[x][y].getEtat() + " ");
-                }
-                System.out.print('|');
-                System.out.println();
-            }
-        }
-        else{
-            for(int y = 0; y < M; y++){
                 System.out.print(compt);
                 compt++;
                 System.out.print(" |");

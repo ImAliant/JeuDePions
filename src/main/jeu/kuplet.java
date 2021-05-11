@@ -18,11 +18,19 @@ public class kuplet{
             score=0;
             return score;
         }
-        if(x>=1 && y==0) {
-            score=x*1035;
+        if(x==0 && y>=1){
+            for(int i = 1; i < p.getK(); i++){
+                if(y==i){
+                    score = (int) (35*Math.pow(10, y));
+                }
+            }
         }
-        else if(x==0 && y>=1) {
-            score=y*580;
+        else if(x>=1 && y==0){
+            for(int i = 1; i < p.getK(); i++){
+                if(x==i){
+                    score = (int) (15*Math.pow(10, x));
+                }
+            }
         }
         return score;
     }
