@@ -2,9 +2,30 @@ package main.jeu;
 
 import java.util.Scanner;
 
+/**
+ * <b>Main est la classe qui execute le programme.</b>
+ * <p>
+ * La classe main posséde un scanner et la méthode main.
+ * 
+ * @author Alexandre, Aymen, Mouadh, Riad
+ */
 public class Main {
 
+    /**
+     * Le scanner qui va récupérer les informations qu'on demande a l'utilisateur.
+     * 
+     * @see Scanner
+     */
     protected static Scanner scanner =new Scanner(System.in);
+
+    /**
+     * Elle propose à l'utilisateur plusieurs mode de jeux et en fonction
+     * du choix de l'utilisateur un objet Jeu va être initialisé.  
+     * 
+     * @param args
+     * 
+     * @see Jeu
+     */
     public static void main(String[] args){
         System.out.println("Plusieurs modes de jeux sont disponibles : JcJ, JcO, OcJ.");
         System.out.println("Sélectionnez un mode de jeu !");
