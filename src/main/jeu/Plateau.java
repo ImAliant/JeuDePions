@@ -4,15 +4,16 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Plateau {
-    private int K; //Alignement requis   ( 4 pour Puissance4 |  5 pour Gomoku )
-    private int N; //Colonnes du plateau ( 7 pour Puissance4 | 19 pour Gomoku )
-    private int M; //Lignes du plateau   ( 6 pour Puissance4 | 19 pour Gomuku )
+
+    private int K;
+    private int N;
+    private int M;
     private Case[][] cases;
     private ArrayList<kuplet> listKu;
     private String scan;
     private Scanner scanner =new Scanner(System.in);
 
-    Plateau(){
+    public Plateau(){
         initJeu();
     }
 
@@ -92,17 +93,13 @@ public class Plateau {
         cases =new Case[N][M];
         for(int i = 0; i < N; i++){
             for(int j = 0; j < M; j++){
-                cases[i][j] =new Case(0, i, j, this, null);
+                cases[i][j] =new Case(0, i, j, null);
             } 
         }
         
-
-        //LISTE DES KUPLETS DU PLATEAU
         listKu =new ArrayList<kuplet>();
         initKupletPlateau(listKu);
-
         initKupletCases(this);
-
     }
 
     void afficheKuplets(ArrayList<kuplet> listKu){
@@ -116,8 +113,6 @@ public class Plateau {
         } 
         System.out.println();
     }
-
-    
 
     void initKupletPlateau(ArrayList<kuplet> listKu){
         Case[] c =new Case[K];
@@ -277,7 +272,7 @@ public class Plateau {
         System.out.println();
         System.out.println();
     }
-  
+
     boolean victoire(){
         // Diagonales (cherche depuis la ligne du bas)
         for (int col = 0; col < N; col++) {
@@ -332,7 +327,7 @@ public class Plateau {
         }
         return false;
     }
-    
+
     public boolean estPlein(){
         int casesRestantes = N*M;
         for(int col = 0; col < N; col++){
@@ -352,40 +347,20 @@ public class Plateau {
         return K;
     }
 
-    public void setK(int k) {
-        K = k;
-    }
-
     public int getN() {
         return N;
-    }
-
-    public void setN(int n) {
-        N = n;
     }
 
     public int getM() {
         return M;
     }
 
-    public void setM(int m) {
-        M = m;
-    }
-
     public Case[][] getCases() {
         return cases;
     }
 
-    public void setCases(Case[][] cases) {
-        this.cases = cases;
-    }
-
     public ArrayList<kuplet> getListKu() {
         return listKu;
-    }
-
-    public void setListKu(ArrayList<kuplet> listKu) {
-        this.listKu = listKu;
     }
 
     public String getScan() {

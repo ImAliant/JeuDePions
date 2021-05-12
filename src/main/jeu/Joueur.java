@@ -1,6 +1,7 @@
 package main.jeu;
 
 public class Joueur {
+    
     private String nom;
     private int couleur;
 
@@ -34,7 +35,7 @@ public class Joueur {
         else col = "S";
         return col;
     }
-    
+
     public String getNom() {
         return nom;
     }
@@ -50,5 +51,4 @@ public class Joueur {
     public void setCouleur(int couleur) {
         this.couleur = couleur;
     }
-    
 }

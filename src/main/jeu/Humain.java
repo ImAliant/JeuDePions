@@ -1,6 +1,7 @@
 package main.jeu;
 
 public class Humain extends Joueur{
+    
     public Humain(String nom, int couleur){
         super(nom, couleur);
     }

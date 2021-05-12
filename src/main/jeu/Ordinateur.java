@@ -8,7 +8,7 @@ public class Ordinateur extends Joueur{
     public Ordinateur(int couleur){
         super("L'ordinateur", couleur);
     }
-    
+
     public void joue(Plateau p){
         boolean placement = false;
 
