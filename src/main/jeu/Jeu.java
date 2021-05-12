@@ -1,16 +1,17 @@
 package main.jeu;
 
 public class Jeu {
+
     private Plateau p;
     public static Joueur[] joueurs =new Joueur[2];
     
-    Jeu(Joueur j1, Joueur j2){
+    public Jeu(Joueur j1, Joueur j2){
         joueurs[0] = j1;
         joueurs[1] = j2;
         p =new Plateau();
     }
 
-    public void joue(){
+    public void partie(){
         int vainqueur = -1;
         int tourJoueur = 0;
         int tour = 1;
@@ -45,8 +46,6 @@ public class Jeu {
                     p.getCases()[i][j].score();
                 }
             }
-
-            //p.afficheKuplets(p.getListKu());
         }
 
         System.out.println("FIN DE PARTIE");
@@ -62,10 +61,6 @@ public class Jeu {
 
     public Plateau getP() {
         return p;
-    }
-
-    public void setP(Plateau p) {
-        this.p = p;
     }
 
     public Joueur[] getJoueurs() {
