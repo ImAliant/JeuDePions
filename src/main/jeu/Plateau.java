@@ -3,19 +3,90 @@ package main.jeu;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * <b>Plateau est la classe représentant le plateau où se déroule la partie d'un jeu de pion.</b>
+ * <p>
+ * Le plateau est caractérisé par les informations suivantes :
+ * <ul>
+ * <li>Un entier K correspondant à l'alignement requis pour gagné.</li>
+ * <li>Un entier N, le nombre de colonnes du plateau.</li>
+ * <li>Un entier M, le nombre de lignes du plateau.</li>
+ * <li>Un tableau à deux dimensions de cases.</li>
+ * <li>Une liste contenant l'ensemble des k-uplets du plateau.</li>
+ * <li>Une chaîne de caractère correspondant au réponse de l'utilisateur.</li>
+ * </ul>
+ * 
+ * @see Case
+ * @see kuplet
+ * 
+ * @author Alexandre, Aymen, Mouadh, Riad
+ */
 public class Plateau {
-    private int K; //Alignement requis   ( 4 pour Puissance4 |  5 pour Gomoku )
-    private int N; //Colonnes du plateau ( 7 pour Puissance4 | 19 pour Gomoku )
-    private int M; //Lignes du plateau   ( 6 pour Puissance4 | 19 pour Gomuku )
+
+    /**
+     * L'alignement requis pour gagné la partie.
+     * 
+     * @see Plateau#getK()
+     */
+    private int K;
+
+    /**
+     * Le nombre de colonnes du plateau.
+     * 
+     * @see Plateau#getN()
+     */
+    private int N;
+
+    /**
+     * Le nombre de lignes du plateau.
+     * 
+     * @see Plateau#getM()
+     */
+    private int M;
+
+    /**
+     * Le tableau à deux dimensions de cases.
+     * 
+     * @see Plateau#getCases()
+     * 
+     * @see Case
+     */
     private Case[][] cases;
+
+    /**
+     * La liste de l'ensemble des k-uplets.
+     * 
+     * @see Plateau#getListKu()
+     * 
+     * @see kuplet
+     */
     private ArrayList<kuplet> listKu;
+
+    /**
+     * Une chaîne de caractère correspondant au réponse de l'utilisateur.
+     * 
+     * @see Plateau#getScan()
+     */
     private String scan;
+
     private Scanner scanner =new Scanner(System.in);
 
-    Plateau(){
+    /**
+     * Constructeur Plateau.
+     * <p>
+     * A la construction d'un objet Plateau, la méthode initJeu() est appelé ce qui
+     * initialise le plateau pour la partie de jeu de pions.
+     * </p>
+     * 
+     * @see Plateau#initJeu()
+     */
+    public Plateau(){
         initJeu();
     }
 
+    /**
+     * Initialise le plateau en fonction des choix de l'utilisateur.
+     */
     void initJeu(){
         System.out.println("Souhaitez-vous jouer à un jeu prédéfini (1) ou choisir votre configuration de plateau (2) ? (1 ou 2)");
         String repChoix = scanner.nextLine();
@@ -92,19 +163,22 @@ public class Plateau {
         cases =new Case[N][M];
         for(int i = 0; i < N; i++){
             for(int j = 0; j < M; j++){
-                cases[i][j] =new Case(0, i, j, this, null);
+                cases[i][j] =new Case(0, i, j, null);
             } 
         }
         
-
-        //LISTE DES KUPLETS DU PLATEAU
         listKu =new ArrayList<kuplet>();
         initKupletPlateau(listKu);
-
         initKupletCases(this);
-
     }
 
+    /**
+     * Affiche l'ensemble des k-uplets du plateau.
+     * @param listKu
+     *      La liste des k-uplets du plateau.
+     * 
+     * @see kuplet
+     */
     void afficheKuplets(ArrayList<kuplet> listKu){
         for(int i = 0; i < listKu.size(); i++){
             System.out.print("[");
@@ -117,8 +191,13 @@ public class Plateau {
         System.out.println();
     }
 
-    
-
+    /**
+     * Initialise les k-uplets du plateau.
+     * @param listKu
+     *      La liste où va être ajouté les k-uplets.
+     * 
+     * @see kuplet
+     */
     void initKupletPlateau(ArrayList<kuplet> listKu){
         Case[] c =new Case[K];
         kuplet k;
@@ -189,6 +268,13 @@ public class Plateau {
         }
     }
 
+    /**
+     * Initialise la liste de k-uplets où se trouve la case.
+     * @param p
+     * 
+     * @see kuplet
+     * @see Case
+     */
     void initKupletCases(Plateau p){
         for(int i = 0; i < N; i++){
             for(int j = 0; j < M; j++){
@@ -197,6 +283,9 @@ public class Plateau {
         }
     }
 
+    /**
+     * Affiche le plateau.
+     */
     void affichagePlateau(){
         System.out.println();
         if(scan.equals("Gomoku") || scan.equals("ConfigPerso")){
@@ -278,6 +367,12 @@ public class Plateau {
         System.out.println();
     }
   
+    /**
+     * A chaque tour de jeu, cherche si un des joueurs a gagné la partie.
+     * @return True si un des joueurs a gagné.
+     * 
+     * @see Joueur
+     */
     boolean victoire(){
         // Diagonales (cherche depuis la ligne du bas)
         for (int col = 0; col < N; col++) {
@@ -311,6 +406,18 @@ public class Plateau {
         return false;
     }
 
+    /**
+     * Cherche si il y a un alignement de K cases de la même couleur.
+     * 
+     * @param currentCol  
+     * @param currentLig   
+     * @param dCol     
+     * @param dLig
+     *     
+     * @return True si il y a un alignement de K cases de la même couleur.
+     * 
+     * @see Case
+     */
     boolean chercheAlignes(int currentCol, int currentLig, int dCol, int dLig){
         int couleur = 0;
         int compteur = 0;
@@ -333,6 +440,10 @@ public class Plateau {
         return false;
     }
     
+    /**
+     * Recherche si le plateau est plein, c'est à dire qu'il n'y a plus de cases vide.
+     * @return True si le plateau est plein.
+     */
     public boolean estPlein(){
         int casesRestantes = N*M;
         for(int col = 0; col < N; col++){
@@ -348,46 +459,51 @@ public class Plateau {
         else return false;
     }
 
+    /**
+     * Retourne l'alignement requis.
+     * @return L'alignement requis.
+     */
     public int getK() {
         return K;
     }
 
-    public void setK(int k) {
-        K = k;
-    }
-
+    /**
+     * Retourne le nombre de colonnes.
+     * @return Le nombre de colonnes.
+     */
     public int getN() {
         return N;
     }
 
-    public void setN(int n) {
-        N = n;
-    }
-
+    /**
+     * Retourne le nombre de lignes.
+     * @return Le nombre de lignes.
+     */
     public int getM() {
         return M;
     }
 
-    public void setM(int m) {
-        M = m;
-    }
-
+    /**
+     * Retourne le tableau à deux dimensions de cases.
+     * @return Le tableau à deux dimensions de cases.
+     */
     public Case[][] getCases() {
         return cases;
     }
 
-    public void setCases(Case[][] cases) {
-        this.cases = cases;
-    }
 
+    /**
+     * Retourne la liste des k-uplets du plateau.
+     * @return La liste des k-uplets du plateau.
+     */
     public ArrayList<kuplet> getListKu() {
         return listKu;
     }
 
-    public void setListKu(ArrayList<kuplet> listKu) {
-        this.listKu = listKu;
-    }
-
+    /**
+     * Retourne la réponse de l'utilisateur.
+     * @return La réponse de l'utilisateur.
+     */
     public String getScan() {
         return scan;
     }

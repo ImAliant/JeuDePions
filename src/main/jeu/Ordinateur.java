@@ -3,12 +3,45 @@ package main.jeu;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * <b>Ordinateur est la classe représentant le Joueur de type Ordinateur.</b>
+ * <p>
+ * Un ordinateur est caractérisé par les informations suivantes :
+ * <ul>
+ * <li> Une couleur, correspondant à la couleur du pion.</li>
+ * </ul>
+ * La classe Ordinateur est étendue de la classe Joueur.
+ * 
+ * @see Joueur
+ * 
+ * @author Alexandre, Aymen, Mouadh, Riad
+ */
 public class Ordinateur extends Joueur{
 
+    /**
+     * Constructeur Ordinateur.
+     * <p>
+     * A la construction d'un objet Ordinateur, son nom est fixé à "L'ordinateur" 
+     * et sa couleur est 1 si il joue en premier ou 2 si il joueen deuxième. 
+     * 
+     * @param couleur
+     *      La couleur du pion du Joueur.
+     * 
+     * @see Joueur
+     */
     public Ordinateur(int couleur){
         super("L'ordinateur", couleur);
     }
     
+    /**
+     * Vérifie si le coup de l'ordinateur est possible et place un pion sur 
+     * les coordonnées sur le Plateau.
+     * 
+     * @param p
+     *      Le Plateau où le pion doit être placé.
+     * 
+     * @see Plateau
+     */
     public void joue(Plateau p){
         boolean placement = false;
 
@@ -77,6 +110,15 @@ public class Ordinateur extends Joueur{
         }
     }
 
+    /**
+     * Identifie la Case qui possède le score le plus élevé.
+     * @param p
+     *      Plateau où se trouve les cases à comparé.
+     * @return La Case avec le score le plus élevé.
+     * 
+     * @see Plateau
+     * @see Case
+     */
     public Case caseMaxScore(Plateau p){
         Case caseMaxScore = p.getCases()[0][0];
         int scoreMax = p.getCases()[0][0].getScore();

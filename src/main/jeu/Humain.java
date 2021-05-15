@@ -1,10 +1,48 @@
 package main.jeu;
 
+/**
+ * <b>Humain est la classe représentant le Joueur de type Humain.</b>
+ * <p>
+ * Un humain est caractérisé par les informations suivantes :
+ * <ul>
+ * <li> Un nom.</li>
+ * <li> Une couleur, correspondant à la couleur du pion.</li>
+ * </ul>
+ * La classe Humain est étendue de la classe Joueur.
+ * 
+ * @see Joueur
+ * 
+ * @author Alexandre, Aymen, Mouadh, Riad
+ */
 public class Humain extends Joueur{
+    
+    /**
+     * Constructeur Humain.
+     * <p>
+     * A la construction d'un objet Humain, le nom correspond à la réponse
+     * du Joueur et sa couleur est 1 si il joue en premier ou 2 si il joue
+     * en deuxième.
+     * @param nom
+     *      Le nom du Joueur.
+     * @param couleur
+     *      La couleur du pion du Joueur.
+     * 
+     * @see Joueur
+     */
     public Humain(String nom, int couleur){
         super(nom, couleur);
     }
 
+    /**
+     * Vérifie si le coup de l'humain est possible et place un pion sur 
+     * les coordonnées choisi sur le Plateau.
+     * 
+     * @param p
+     *      Le Plateau où le pion doit être placé.
+     * 
+     * @see Joueur
+     * @see Plateau
+     */
     public void joue(Plateau p){
         boolean placement = false;
 
@@ -104,6 +142,14 @@ public class Humain extends Joueur{
         }
     }
 
+    /**
+     * Traduit la lettre donné par le Joueur et la transforme en un entier
+     * qui est la coordonnée de la colonne. 
+     * @param s
+     *      La lettre donnée par le Joueur.
+     * @return
+     *      La coordonnée de la colonne.
+     */
     public int lettreVersChiffre(String s){
         int col = 0;
         if(s.equals("A")||s.equals("a")){
