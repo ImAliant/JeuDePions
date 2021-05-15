@@ -11,12 +11,12 @@ Après ce choix, vous pouvez choisir un jeu prédéfini (Gomoku, Puissance4 ou M
 Il ne vous reste plus qu'à jouer et essayer de battre l'ordinateur.
 
 Répartition des tâches: 
--Mouadh s'est occupé du score et des k-uplets
--Alexandre s'est occupé de l'ordinateur, du plateau et du jeu
--Riad s'est occupé de la base de k-uplets
--Aymen s'est occupé de la correction des bugs et des tests
+-Mouadh s'est occupé du score et des k-uplets.
+-Alexandre s'est occupé de l'ordinateur, du plateau et du jeu.
+-Riad s'est occupé de la base de k-uplets.
+-Aymen s'est occupé de la correction des bugs et des tests.
 
-Liens pour la documentation : doc/index
+Liens pour la documentation : projet-pi4-pions/doc/index
 
 Commit à préciser:
 -Bases du gomoku : Alexandre, Aymen 04/03/2021
