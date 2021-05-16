@@ -141,7 +141,6 @@ public class Ordinateur extends Joueur{
         int index = new Random().nextInt(casesMaxScore.size());
         caseMaxScore = casesMaxScore.get(index);
         
-        System.out.println(scoreMax);
         return caseMaxScore;
     }
 }
