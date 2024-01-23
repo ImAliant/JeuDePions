@@ -2,21 +2,31 @@ package main.game;
 
 public class GameConfigurations {
     private final int kupletSize;
-    private final int width;
-    private final int height;
+    private final int row;
+    private final int column;
 
-    public GameConfigurations(int kupletSize, int width, int height) {
+    public GameConfigurations(int kupletSize, int row, int column) {
         this.kupletSize = kupletSize;
-        this.width = width;
-        this.height = height;
+        this.row = row;
+        this.column = column;
     }
 
     @Override
     public String toString() {
         return "GameConfigurations{" +
                 "kupletSize=" + kupletSize +
-                ", width=" + width +
-                ", height=" + height +
+                ", row=" + row +
+                ", column=" + column +
                 '}';
+    }
+
+    public int getKupletSize() {
+        return kupletSize;
+    }
+    public int getRow() {
+        return row;
+    }
+    public int getColumn() {
+        return column;
     }
 }

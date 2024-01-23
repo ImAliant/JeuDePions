@@ -66,7 +66,10 @@ public class Board implements Cloneable{
     }
 
     private void initKupletCases() {
-        // TODO
+        for (Kuplet k : kuplets) {
+            for (Cell cell : k.getCases())
+                cell.init();
+        }
     }
 
     public List<Cell> getCellGroup(int startX, int startY, int dirX, int dirY) {

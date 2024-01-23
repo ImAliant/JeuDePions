@@ -57,18 +57,17 @@ public class Menu {
     }
 
     private void launchGame() {
-        // Players creation
         Player[] players = new Player[2];
-        if (ai.equals(Constants.YES)) {
-            players[0] = new Human(Constants.DEFAULTNAMES[0]);
+        players[0] = new Human(Constants.DEFAULTNAMES[0]);
+        if (ai.equals(Constants.YES))
             players[1] = new AI(Constants.AI);
-        }
+        else players[1] = new Human(Constants.DEFAULTNAMES[1]);
 
         Game newGame;
         
         switch (game) {
             case Constants.TICTACTOE:
-                newGame = new TicTacToe(players, gameConfigurations);
+                newGame = new Tictactoe(players, gameConfigurations);
                 break;
             case Constants.CONNECTFOUR:
                 newGame = new ConnectFour(players, gameConfigurations);
@@ -77,7 +76,7 @@ public class Menu {
                 newGame = new Gomoku(players, gameConfigurations);
                 break;
             default:
-                break;
+                throw new IllegalArgumentException(Constants.INVALIDGAME);
         }
 
         newGame.run();
