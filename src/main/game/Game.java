@@ -1,8 +1,8 @@
 package main.game;
 
 public abstract class Game {
-    private Board board;
-    private Player[] players;
+    protected Board board;
+    protected Player[] players;
 
     protected Game(Player[] players, GameConfigurations gameConfigurations) {
         this.players = players;
@@ -14,12 +14,4 @@ public abstract class Game {
     public abstract void showBoard();
 
     public abstract boolean gameOver();
-
-    public Board getBoard() {
-        return board.clone();
-    }
-
-    public Player[] getPlayers() {
-        return players.clone();
-    }
 }

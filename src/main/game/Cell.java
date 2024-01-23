@@ -13,18 +13,17 @@ public class Cell implements Cloneable {
     private int x;
     private int y;
 
-    public Cell(Board board, int value, int x, int y, List<Kuplet> kuplets) {
+    public Cell(Board board, int value, int x, int y) {
         this.board = board;
         this.value = value;
         this.x = x;
         this.y = y;
-        this.kuplets = new ArrayList<>(kuplets);
         this.score = 0;
     }
 
     @Override
     public Cell clone() {
-        return new Cell(board.clone(), value, x, y, kuplets);
+        return new Cell(board.clone(), value, x, y);
     }
 
     public List<Kuplet> init() {
@@ -47,6 +46,15 @@ public class Cell implements Cloneable {
         return score;
     }
 
+    @Override
+    public String toString() {
+        String res;
+        if (value == 0) res = ".";
+        else if (value == 1) res = "X";
+        else res = "O";
+        return res;
+    }
+
     public void setValue(int value) { 
         if (this.value == 0) {
             this.value = value;
@@ -54,13 +62,6 @@ public class Cell implements Cloneable {
     }
 
     public int getValue() { return value; }
-    public char getChar() { 
-        char res;
-        if (value == 1) res = 'X';
-        else if (value == 2) res = 'O';
-        else res = ' ';
-        return res;
-    }
     public int getX() { return x; }
     public int getY() { return y; }
     public int getScore() { return score; }

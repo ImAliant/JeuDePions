@@ -14,29 +14,26 @@ public class Menu {
         run();
     }
 
-    public void run() {
+    private void run() {
         askForGame();
 
         askForAI();
 
         setGameConfiguration();
 
-        // On lance le jeu
         launchGame();
     }
 
     private void askForGame() {
         System.out.println(Constants.GAMEQUESTION);
-        for (Tuple<Integer, String> g : Constants.GAMES) {
+        for (Tuple<Integer, String> g : Constants.GAMES)
             System.out.println(String.format("%d. %s", g.getFirst(), g.getSecond()));
-        }
         String rep = scanner.nextLine();
-
-        if (Integer.parseInt(rep) < 1 || Integer.parseInt(rep) > Constants.GAMES.size()+1)
-            throw new IllegalArgumentException(Constants.INVALIDGAME);
 
         if (rep.isEmpty())
             rep = Constants.DEFAULTGAME;
+        if (Integer.parseInt(rep) < 1 || Integer.parseInt(rep) > Constants.GAMES.size()+1)
+            throw new IllegalArgumentException(Constants.INVALIDGAME);
 
         game = Integer.parseInt(rep);
 

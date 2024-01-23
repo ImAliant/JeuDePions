@@ -18,10 +18,17 @@ public class Board implements Cloneable{
         this.row = row;
 
         cells = new Cell[column][row];
+        initCells();
 
         kuplets = new ArrayList<>();
-
         initKuplet();
+    }
+
+    private void initCells() {
+        for (int i = 0; i < column; i++) {
+            for (int j = 0; j < row; j++)
+                cells[i][j] = new Cell(this, 0, i, j);
+        }
     }
 
     private void initKuplet() {
@@ -34,7 +41,7 @@ public class Board implements Cloneable{
 
     private void initKupletH() {
         for (int j = 0; j < row; j++)
-            for (int i = 0; i <= column - kuplet + 1; i++)
+            for (int i = 0; i <= column - kuplet; i++)
                 kuplets.add(new Kuplet(this, getCellGroup(i, j, 0, 1)));
     }
 
@@ -75,9 +82,12 @@ public class Board implements Cloneable{
     public List<Cell> getCellGroup(int startX, int startY, int dirX, int dirY) {
         ArrayList<Cell> group = new ArrayList<>();
 
-        for (int i = 0; i < kuplet; i++)
-            group.add(cells[startX + i * dirX][startY + i * dirY]);
-
+        for (int i = 0; i < kuplet; i++) {
+            group.add(cells[startX][startY]);
+            startX += dirX;
+            startY += dirY;
+        }
+            
         return group;
     }
 
@@ -96,4 +106,5 @@ public class Board implements Cloneable{
     public int getKuplet() { return kuplet; }
     public int getColumn() { return column; }
     public int getRow() { return row; }
+    public Cell[][] getCells() { return cells; }
 }
