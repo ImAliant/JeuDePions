@@ -5,10 +5,10 @@ import java.util.Scanner;
 public class Menu {
     protected final Scanner scanner = new Scanner(System.in);
 
-    private String game;
+    private int game;
     private String ai;
-    private String name;
-    private String name2 = Constants.AI;
+
+    private GameConfigurations gameConfigurations;
 
     public Menu() {
         run();
@@ -19,44 +19,83 @@ public class Menu {
 
         askForAI();
 
-        askForName();
+        setGameConfiguration();
 
-        askGameConfiguration();
+        // On lance le jeu
+        launchGame();
     }
 
     private void askForGame() {
         System.out.println(Constants.GAMEQUESTION);
-        for (int i = 0; i < Constants.GAMES.length; i++)
-            System.out.println((i + 1) + ". " + Constants.GAMES[i]);
-        game = scanner.nextLine();
+        for (Tuple<Integer, String> g : Constants.GAMES) {
+            System.out.println(String.format("%d. %s", g.getFirst(), g.getSecond()));
+        }
+        String rep = scanner.nextLine();
+
+        if (Integer.parseInt(rep) < 1 || Integer.parseInt(rep) > Constants.GAMES.size()+1)
+            throw new IllegalArgumentException(Constants.INVALIDGAME);
+
+        if (rep.isEmpty())
+            rep = Constants.DEFAULTGAME;
+
+        game = Integer.parseInt(rep);
+
         System.out.println();
     }
 
     private void askForAI() {
         System.out.println(Constants.AIQUESTION);
         ai = scanner.nextLine();
+
+        if (!ai.equals(Constants.YES) && !ai.equals(Constants.NO) && !ai.isEmpty())
+            throw new IllegalArgumentException(Constants.INVALIDANSWER);
+
+        if (ai.isEmpty()) 
+            ai = Constants.DEFAULTAI;
+
         System.out.println();
     }
 
-    private void askForName() {
-        name = askForPlayerName(Constants.NAMEQUESTION, Constants.DEFAULTNAMES[0]);
-        if (!ai.equals(Constants.YES))
-            name2 = askForPlayerName(Constants.NAMEQUESTION, Constants.DEFAULTNAMES[1]);
-    }
-
-    private String askForPlayerName(String question, String defaultName) {
-        System.out.println(question);
-        String playerName = scanner.nextLine();
-        if (playerName == null || playerName.isEmpty()) {
-            playerName = defaultName;
+    private void launchGame() {
+        // Players creation
+        Player[] players = new Player[2];
+        if (ai.equals(Constants.YES)) {
+            players[0] = new Human(Constants.DEFAULTNAMES[0]);
+            players[1] = new AI(Constants.AI);
         }
 
-        return String.format("%s (%s)", playerName, Constants.HUMAN);
+        Game newGame;
+        
+        switch (game) {
+            case Constants.TICTACTOE:
+                newGame = new TicTacToe(players, gameConfigurations);
+                break;
+            case Constants.CONNECTFOUR:
+                newGame = new ConnectFour(players, gameConfigurations);
+                break;
+            case Constants.GOMOKU:
+                newGame = new Gomoku(players, gameConfigurations);
+                break;
+            default:
+                break;
+        }
+
+        newGame.run();
     }
 
-    private void askGameConfiguration() {
-        System.out.println(Constants.GAMECONFIGQUESTION);
-        String defaultConfig = scanner.nextLine();
-        System.out.println();
+    private void setGameConfiguration() {
+        switch (game) {
+            case Constants.TICTACTOE:
+                gameConfigurations = Constants.TICTACTOECONF;
+                break;
+            case Constants.CONNECTFOUR:
+                gameConfigurations = Constants.CONNECTFOURCONF;
+                break;
+            case Constants.GOMOKU:
+                gameConfigurations = Constants.GOMOKUCONF;
+                break;
+            default:
+                throw new IllegalArgumentException(Constants.INVALIDGAME);
+        }
     }
 }
