@@ -1,4 +1,4 @@
-package main.game;
+package main.pawngame;
 
 public class GameConfigurations {
     private final int kupletSize;

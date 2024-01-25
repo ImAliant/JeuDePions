@@ -1,4 +1,4 @@
-package main.game;
+package main.pawngame;
 
 public class Human extends Player{
     public Human(String name) {

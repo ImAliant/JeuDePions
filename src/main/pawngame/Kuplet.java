@@ -1,4 +1,4 @@
-package main.game;
+package main.pawngame;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +12,16 @@ public class Kuplet {
         this.board = board;
         this.score = 0;
         this.cases = new ArrayList<>(cases);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder res = new StringBuilder();
+        for (Cell cell : cases) {
+            res.append(cell.toString());
+            res.append(" ");
+        }
+        return res.toString();
     }
 
     public boolean contains (Object o) {

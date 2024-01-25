@@ -1,4 +1,4 @@
-package main.game;
+package main.pawngame;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,40 +35,45 @@ public class Board implements Cloneable{
         initKupletH();
         initKupletV();
         initKupletD();
-    
+
         initKupletCases();
     }
 
     private void initKupletH() {
-        for (int j = 0; j < row; j++)
-            for (int i = 0; i <= column - kuplet; i++)
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j <= column - kuplet; j++) {
                 kuplets.add(new Kuplet(this, getCellGroup(i, j, 0, 1)));
+            }
+        }
     }
 
     private void initKupletV() {
         for (int i = 0; i < column; i++) {
-            for (int j = 0; j <= row - kuplet; j++)
-                kuplets.add(new Kuplet(this, getCellGroup(i, j, 1, 0)));
+            for (int j = 0; j <= row - kuplet; j++) {
+                kuplets.add(new Kuplet(this, getCellGroup(j, i, 1, 0)));
+            }
         }
     }
 
     private void initKupletD() {
-        initKupletD1();
+        initKupletDHGBD();
 
-        initKupletD2();
+        initKupletDHDBG();
     }
 
-    private void initKupletD1() {
-        for (int i = 0; i <= column - kuplet; i++) {
-            for (int j = 0; j <= row - kuplet; j++)
+    private void initKupletDHGBD() {
+        for (int i = 0; i <= row - kuplet; i++) {
+            for (int j = 0; j <= column - kuplet; j++) {
                 kuplets.add(new Kuplet(this, getCellGroup(i, j, 1, 1)));
+            }
         }
     }
 
-    private void initKupletD2() {
-        for (int i = kuplet - 1; i < column; i++) {
-            for (int j = 0; j <= row - kuplet; j++)
+    private void initKupletDHDBG() {
+        for (int i = kuplet - 1; i < row; i++) {
+            for (int j = 0; j <= column - kuplet; j++) {
                 kuplets.add(new Kuplet(this, getCellGroup(i, j, -1, 1)));
+            }
         }
     }
 
@@ -107,4 +112,5 @@ public class Board implements Cloneable{
     public int getColumn() { return column; }
     public int getRow() { return row; }
     public Cell[][] getCells() { return cells; }
+    public ArrayList<Kuplet> getKuplets() { return kuplets; }
 }

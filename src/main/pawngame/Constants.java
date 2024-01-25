@@ -1,4 +1,4 @@
-package main.game;
+package main.pawngame;
 
 import java.util.Arrays;
 import java.util.List;

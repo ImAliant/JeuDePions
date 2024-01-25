@@ -1,4 +1,4 @@
-package main.game;
+package main.pawngame;
 
 public class Player {
     private String name;

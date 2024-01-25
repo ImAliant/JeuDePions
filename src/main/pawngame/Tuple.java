@@ -1,4 +1,4 @@
-package main.game;
+package main.pawngame;
 
 public class Tuple<T1, T2> {
     private final T1 first;

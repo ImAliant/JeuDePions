@@ -1,4 +1,8 @@
-package main.game;
+package main.pawngame.game;
+
+import main.pawngame.Board;
+import main.pawngame.GameConfigurations;
+import main.pawngame.Player;
 
 public abstract class Game {
     protected Board board;

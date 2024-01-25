@@ -1,4 +1,4 @@
-package main.game;
+package main.pawngame;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,12 +26,11 @@ public class Cell implements Cloneable {
         return new Cell(board.clone(), value, x, y);
     }
 
-    public List<Kuplet> init() {
-        ArrayList<Kuplet> res = new ArrayList<>();
-        for (Kuplet kuplet : kuplets) {
-            if (kuplet.contains(this)) res.add(kuplet);
+    public void init() {
+        kuplets = new ArrayList<>();
+        for (Kuplet kuplet : board.getKuplets()) {
+            if (kuplet.getCases().contains(this)) kuplets.add(kuplet);
         }
-        return res;
     }
 
     public int score() {
@@ -46,13 +45,15 @@ public class Cell implements Cloneable {
         return score;
     }
 
+    public String state() {
+        if (value == 0) return ".";
+        else if (value == 1) return "X";
+        else return "O";
+    }
+
     @Override
     public String toString() {
-        String res;
-        if (value == 0) res = ".";
-        else if (value == 1) res = "X";
-        else res = "O";
-        return res;
+        return String.format("(%d %d)", x, y);
     }
 
     public void setValue(int value) { 
@@ -61,6 +62,7 @@ public class Cell implements Cloneable {
         }
     }
 
+    public List<Kuplet> getKuplets() { return kuplets; }
     public int getValue() { return value; }
     public int getX() { return x; }
     public int getY() { return y; }

@@ -1,7 +1,10 @@
-package main.game;
+package main.pawngame.game;
 
-public class ConnectFour extends Game {
-    public ConnectFour(Player[] players, GameConfigurations gameConfigurations) {
+import main.pawngame.GameConfigurations;
+import main.pawngame.Player;
+
+public class Gomoku extends Game{
+    public Gomoku(Player[] players, GameConfigurations gameConfigurations) {
         super(players, gameConfigurations);
     }
 
