@@ -1,7 +1,10 @@
 # Projet PI4 Pions 4
-Pour compiler -> javac -d . src/main/jeu/*.java dans projet-pi4-pions.
+Pour compiler -> 
+```
+javac -d . src/main/pawngame/*.java src/main/pawngame/game/*.java src/main/pawngame/game/tictactoe/*.java src/main/pawngame/game/connectfour/*.java src/main/pawngame/game/gomoku/*.java
+```
 
-Pour éxécuter -> java main.jeu.Main.
+Pour éxécuter -> java main.pawngame.Main
 
 Notre projet est un jeu de pions comme son nom l'indique. Pour jouer vous devez après avoir lancer le programme suivre les instructions afficher et choisir parmi plusieurs configuration : 
 -Vous pouvez choisir de jouer contre un autre joueur en tapant JcJ
