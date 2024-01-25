@@ -1,7 +1,8 @@
-package main.pawngame.game;
+package main.pawngame.game.connectfour;
 
 import main.pawngame.GameConfigurations;
 import main.pawngame.Player;
+import main.pawngame.game.Game;
 
 public class ConnectFour extends Game {
     public ConnectFour(Player[] players, GameConfigurations gameConfigurations) {

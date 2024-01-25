@@ -1,7 +1,8 @@
-package main.pawngame.game;
+package main.pawngame.game.tictactoe;
 
 import main.pawngame.GameConfigurations;
 import main.pawngame.Player;
+import main.pawngame.game.Game;
 
 public class Tictactoe extends Game{
 

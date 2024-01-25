@@ -2,10 +2,10 @@ package main.pawngame;
 
 import java.util.Scanner;
 
-import main.pawngame.game.ConnectFour;
 import main.pawngame.game.Game;
-import main.pawngame.game.Gomoku;
-import main.pawngame.game.Tictactoe;
+import main.pawngame.game.connectfour.ConnectFour;
+import main.pawngame.game.gomoku.Gomoku;
+import main.pawngame.game.tictactoe.Tictactoe;
 
 public class Menu {
     protected final Scanner scanner = new Scanner(System.in);

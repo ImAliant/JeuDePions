@@ -1,7 +1,8 @@
-package main.pawngame.game;
+package main.pawngame.game.gomoku;
 
 import main.pawngame.GameConfigurations;
 import main.pawngame.Player;
+import main.pawngame.game.Game;
 
 public class Gomoku extends Game{
     public Gomoku(Player[] players, GameConfigurations gameConfigurations) {
