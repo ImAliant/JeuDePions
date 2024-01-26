@@ -16,6 +16,18 @@ public class Tictactoe extends Model {
             throw new IllegalArgumentException("Tictactoe board must be 3x3");
     }
 
+    @Override
+    protected void turn() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'turn'");
+    }
+
+    @Override
+    protected boolean checkWin() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'checkWin'");
+    }
+
     /*@Override
     public void run() {
         showBoard();

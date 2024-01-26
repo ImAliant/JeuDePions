@@ -14,4 +14,16 @@ public class Gomoku extends Model {
         if (board.getColumn() != 19 || board.getRow() != 19)
             throw new IllegalArgumentException("Gomoku board must be 19x19");
     }
+
+    @Override
+    protected void turn() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'turn'");
+    }
+
+    @Override
+    protected boolean checkWin() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'checkWin'");
+    }
 }

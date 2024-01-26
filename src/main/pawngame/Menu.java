@@ -1,7 +1,6 @@
 package main.pawngame;
 
 import java.util.Scanner;
-import java.util.logging.Logger;
 
 import main.pawngame.game.*;
 import main.pawngame.game.connectfour.*;
@@ -82,7 +81,7 @@ public class Menu {
                 throw new IllegalArgumentException(Constants.INVALIDGAME);
         }
 
-        newGame.run();
+        newGame.start();
     }
 
     private void setGameConfiguration() {

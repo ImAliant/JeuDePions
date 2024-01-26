@@ -8,12 +8,24 @@ public abstract class Model {
     protected Board board;
     protected Player[] players;
 
-    protected Model(Player[] players, GameConfigurations gameConfigurations) {
-        this.players = players;
-        board = new Board(gameConfigurations.getKupletSize(), gameConfigurations.getRow(), gameConfigurations.getColumn());
+    protected Player currentPlayer;
 
+    protected Model(Player[] players, GameConfigurations gameConfigurations) {
+        initPlayers(players);
+        initBoard(gameConfigurations);
+    }
+
+    private void initPlayers(Player[] players) {
+        this.players = players;
+        currentPlayer = players[0];
+    }
+
+    private void initBoard(GameConfigurations gameConfigurations) {
+        board = new Board(gameConfigurations.getKupletSize(), gameConfigurations.getRow(), gameConfigurations.getColumn());
         checkBoardDimension();
     }
 
+    protected abstract void turn();
+    protected abstract boolean checkWin();
     protected abstract void checkBoardDimension();
 }

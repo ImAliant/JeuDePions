@@ -14,4 +14,16 @@ public class ConnectFour extends Model {
         if (board.getColumn() != 7 || board.getRow() != 6)
             throw new IllegalArgumentException("Connect Four board must be 7x6");
     }
+
+    @Override
+    protected void turn() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'turn'");
+    }
+
+    @Override
+    protected boolean checkWin() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'checkWin'");
+    }
 }

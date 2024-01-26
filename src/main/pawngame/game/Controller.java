@@ -9,7 +9,7 @@ public abstract class Controller {
         this.view = view;
     }
 
-    public void run() {
-        
+    public void start() {
+        // TODO Auto-generated method stub
     }
 }
