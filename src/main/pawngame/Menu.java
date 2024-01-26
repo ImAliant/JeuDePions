@@ -1,11 +1,12 @@
 package main.pawngame;
 
 import java.util.Scanner;
+import java.util.logging.Logger;
 
-import main.pawngame.game.Game;
-import main.pawngame.game.connectfour.ConnectFour;
-import main.pawngame.game.gomoku.Gomoku;
-import main.pawngame.game.tictactoe.Tictactoe;
+import main.pawngame.game.*;
+import main.pawngame.game.connectfour.*;
+import main.pawngame.game.gomoku.*;
+import main.pawngame.game.tictactoe.*;
 
 public class Menu {
     protected final Scanner scanner = new Scanner(System.in);
@@ -65,17 +66,17 @@ public class Menu {
             players[1] = new AI(Constants.AI);
         else players[1] = new Human(Constants.DEFAULTNAMES[1]);
 
-        Game newGame;
+        Controller newGame;
         
         switch (game) {
             case Constants.TICTACTOE:
-                newGame = new Tictactoe(players, gameConfigurations);
+                newGame = new TictactoeController(new Tictactoe(players, gameConfigurations), new TictactoeView());
                 break;
             case Constants.CONNECTFOUR:
-                newGame = new ConnectFour(players, gameConfigurations);
+                newGame = new ConnectFourController(new ConnectFour(players, gameConfigurations), new ConnectFourView());
                 break;
             case Constants.GOMOKU:
-                newGame = new Gomoku(players, gameConfigurations);
+                newGame = new GomokuController(new Gomoku(players, gameConfigurations), new GomokuView());
                 break;
             default:
                 throw new IllegalArgumentException(Constants.INVALIDGAME);

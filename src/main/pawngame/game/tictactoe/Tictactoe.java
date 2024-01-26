@@ -2,15 +2,21 @@ package main.pawngame.game.tictactoe;
 
 import main.pawngame.GameConfigurations;
 import main.pawngame.Player;
-import main.pawngame.game.Game;
+import main.pawngame.game.Model;
 
-public class Tictactoe extends Game{
+public class Tictactoe extends Model {
 
     public Tictactoe(Player[] players, GameConfigurations gameConfigurations) {
         super(players, gameConfigurations);
     }
 
     @Override
+    protected void checkBoardDimension() {
+        if (board.getColumn() != 3 || board.getRow() != 3)
+            throw new IllegalArgumentException("Tictactoe board must be 3x3");
+    }
+
+    /*@Override
     public void run() {
         showBoard();
     }
@@ -35,5 +41,5 @@ public class Tictactoe extends Game{
     @Override
     public boolean gameOver() {
         return false;
-    }
+    }*/
 }

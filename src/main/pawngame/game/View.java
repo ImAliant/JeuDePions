@@ -1,5 +1,7 @@
 package main.pawngame.game;
 
-public class View {
-    
+public abstract class View {
+    protected View() {
+        // TODO Auto-generated constructor stub
+    }
 }

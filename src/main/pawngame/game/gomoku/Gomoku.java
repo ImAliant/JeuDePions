@@ -2,28 +2,16 @@ package main.pawngame.game.gomoku;
 
 import main.pawngame.GameConfigurations;
 import main.pawngame.Player;
-import main.pawngame.game.Game;
+import main.pawngame.game.Model;
 
-public class Gomoku extends Game{
+public class Gomoku extends Model {
     public Gomoku(Player[] players, GameConfigurations gameConfigurations) {
         super(players, gameConfigurations);
     }
 
     @Override
-    public void run() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'run'");
-    }
-
-    @Override
-    public void showBoard() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'showBoard'");
-    }
-
-    @Override
-    public boolean gameOver() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'gameOver'");
+    protected void checkBoardDimension() {
+        if (board.getColumn() != 19 || board.getRow() != 19)
+            throw new IllegalArgumentException("Gomoku board must be 19x19");
     }
 }
