@@ -17,7 +17,7 @@ public class Board {
         this.row = config.getRow();
         this.column = config.getColumn();
 
-        cells = new Cell[column][row];
+        cells = new Cell[row][column];
         initCells();
 
         kuplets = new ArrayList<>();
@@ -25,8 +25,8 @@ public class Board {
     }
 
     private void initCells() {
-        for (int i = 0; i < column; i++) {
-            for (int j = 0; j < row; j++)
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < column; j++)
                 cells[i][j] = new Cell(this, 0, i, j);
         }
     }
@@ -41,9 +41,8 @@ public class Board {
 
     private void initKupletH() {
         for (int i = 0; i < row; i++) {
-            for (int j = 0; j <= column - kuplet; j++) {
+            for (int j = 0; j <= column - kuplet; j++)
                 kuplets.add(new Kuplet(this, getCellGroup(i, j, 0, 1)));
-            }
         }
     }
 

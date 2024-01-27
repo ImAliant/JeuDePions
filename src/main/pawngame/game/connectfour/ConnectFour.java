@@ -22,11 +22,11 @@ public class ConnectFour extends Model {
         throw new UnsupportedOperationException("Unimplemented method 'turn'");
     }
 
-    @Override
+    /*@Override
     protected boolean checkWin() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'checkWin'");
-    }
+    }*/
 
     @Override
     protected void createConfig() {
