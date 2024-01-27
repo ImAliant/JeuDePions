@@ -14,8 +14,8 @@ public class Constants {
     public static final int TICTACTOE_COLUMN = 3;
     // ConnectFour config
     public static final int CONNECTFOUR_KUPLET = 4;
-    public static final int CONNECTFOUR_ROW = 7;
-    public static final int CONNECTFOUR_COLUMN = 6;
+    public static final int CONNECTFOUR_ROW = 6;
+    public static final int CONNECTFOUR_COLUMN = 7;
     // Gomoku config
     public static final int GOMOKU_KUPLET = 5;
     public static final int GOMOKU_ROW = 19;
