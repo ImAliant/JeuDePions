@@ -4,8 +4,8 @@ import main.pawngame.game.Controller;
 
 public class TictactoeController extends Controller{
 
-    public TictactoeController(Tictactoe model, TictactoeView view) {
-        super(model, view);
+    public TictactoeController() {
+        super(new TictactoeModel(), new TictactoeView());
     }
     
 }

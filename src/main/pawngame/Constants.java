@@ -45,7 +45,7 @@ public class Constants {
     public static final String AI = "AI";
 
     public static final String DEFAULTGAME = "1";
-    public static final String DEFAULTAI = YES;
+    public static final boolean DEFAULTAI = true;
 
     public static final String FORMATNAME = "%-15s (%s)";
 

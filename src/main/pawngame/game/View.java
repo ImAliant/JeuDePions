@@ -1,10 +1,14 @@
 package main.pawngame.game;
 
 import main.pawngame.Board;
-import main.pawngame.Player;
 import main.pawngame.UI;
+import main.pawngame.player.Player;
+
+import java.util.Scanner;
 
 public abstract class View implements UI {
+    protected Scanner scanner = new Scanner(System.in);
+
     protected View() {}
 
     public void showBoard(Board board) {
@@ -20,6 +24,10 @@ public abstract class View implements UI {
             sb.append(i).append(" ");
         }
         System.out.println(sb);
+    }
+
+    public void showCurrentPlayer(Player player) {
+        System.out.println("Current player is " + player.getName());
     }
 
     public void showWinner(Player player) {

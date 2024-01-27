@@ -18,13 +18,21 @@ public abstract class Controller {
     public void start() {
         view.showBoard(model.getBoard());
 
-        while (!model.checkWin()) {
-            model.turn();
+        boolean isGameOver = false;
+        while (!isGameOver) {
+            view.showCurrentPlayer(model.getCurrentPlayer());
             view.showBoard(model.getBoard());
+            model.turn();
+
+            isGameOver = model.checkWin();
+
+            model.changePlayer();
         }
+
+        end();
     }
 
     public void end() {
-        view.showWinner(model.getCurrentPlayer());
+        view.showWinner(model.getWinner());
     }
 }
