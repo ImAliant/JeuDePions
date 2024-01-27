@@ -29,7 +29,7 @@ public class Kuplet {
     }
 
     public Board getBoard() { 
-        return board.clone();
+        return board;
     }
     public int getScore() { return score; }
     public List<Cell> getCases() { 

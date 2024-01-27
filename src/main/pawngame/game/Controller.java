@@ -7,9 +7,24 @@ public abstract class Controller {
     protected Controller(Model model, View view) {
         this.model = model;
         this.view = view;
+
+        init();
+    }
+
+    public void init() {
+        model.init();
     }
 
     public void start() {
-        // TODO Auto-generated method stub
+        view.showBoard(model.getBoard());
+
+        while (!model.checkWin()) {
+            model.turn();
+            view.showBoard(model.getBoard());
+        }
+    }
+
+    public void end() {
+        view.showWinner(model.getCurrentPlayer());
     }
 }

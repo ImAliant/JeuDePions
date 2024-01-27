@@ -8,9 +8,18 @@ public class Constants {
         throw new AssertionError("Constants class should not be instantiated");
     }
 
-    public static final GameConfigurations TICTACTOECONF = new GameConfigurations(3, 3, 3);
-    public static final GameConfigurations CONNECTFOURCONF = new GameConfigurations(4, 7, 6);
-    public static final GameConfigurations GOMOKUCONF = new GameConfigurations(5, 19, 19);
+    // Tictactoe config
+    public static final int TICTACTOE_KUPLET = 3;
+    public static final int TICTACTOE_ROW = 3;
+    public static final int TICTACTOE_COLUMN = 3;
+    // ConnectFour config
+    public static final int CONNECTFOUR_KUPLET = 4;
+    public static final int CONNECTFOUR_ROW = 7;
+    public static final int CONNECTFOUR_COLUMN = 6;
+    // Gomoku config
+    public static final int GOMOKU_KUPLET = 5;
+    public static final int GOMOKU_ROW = 19;
+    public static final int GOMOKU_COLUMN = 19;
     
     protected static final List<Tuple<Integer, String>> GAMES = Arrays.asList(
         new Tuple<>(1, "Tic-tac-toe"),
@@ -22,7 +31,12 @@ public class Constants {
     public static final int CONNECTFOUR = 2;
     public static final int GOMOKU = 3;
 
-    protected static final String[] DEFAULTNAMES = {"Player 1", "Player 2"};
+    public static final String FIRSTPLAYER = "Player 1";
+    public static final String SECONDPLAYER = "Player 2";
+
+    public static final int IDPLAYER1 = 0;
+    public static final int IDPLAYER2 = 1;
+    public static final int MAX_PLAYERS = 2;
 
     public static final String YES = "y";
     public static final String NO = "n";
@@ -35,10 +49,10 @@ public class Constants {
 
     public static final String FORMATNAME = "%-15s (%s)";
 
-    public static final String GAMEQUESTION = "What game do you want to play? (default is 1)";
-    public static final String NAMEQUESTION = "What is your name? (default is \"Player ...\")";
-    public static final String AIQUESTION = "Do you want to play against an AI? (y/n) (default is y)";
-    public static final String GAMECONFIGQUESTION = "Do you want to play with the default configuration? (y/n) (default is y)";
+    public static final String WELCOME = "Welcome to the PawnGame ! Three games are available:";
+    public static final String GAMEQUESTION = "What game do you want to play? (default is 1) [1..3]:";
+    public static final String AIQUESTION = "Do you want to play against an AI? (default is y) [y/n]:";
+    public static final String GAMECONFIGQUESTION = "Do you want to play with the default configuration? (default is y) [y/n]:";
 
     public static final String INVALIDGAME = "Invalid game";
     public static final String INVALIDANSWER = "Invalid answer";

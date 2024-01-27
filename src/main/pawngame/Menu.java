@@ -13,26 +13,36 @@ public class Menu {
     private int game;
     private String ai;
 
-    private GameConfigurations gameConfigurations;
-
     public Menu() {
         run();
     }
 
     private void run() {
+        clearScreen();
+
+        welcomeMessage();
+
         askForGame();
 
         askForAI();
 
-        setGameConfiguration();
-
         launchGame();
     }
 
+    // TODO set this function in a specific class
+    private void clearScreen() {
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+    }
+
+    private void welcomeMessage() {
+        System.out.printf("%s \n", Constants.WELCOME);
+    }
+
     private void askForGame() {
-        System.out.println(Constants.GAMEQUESTION);
         for (Tuple<Integer, String> g : Constants.GAMES)
             System.out.println(String.format("%d. %s", g.getFirst(), g.getSecond()));
+        System.out.printf("%s ", Constants.GAMEQUESTION);
         String rep = scanner.nextLine();
 
         if (rep.isEmpty())
@@ -46,7 +56,7 @@ public class Menu {
     }
 
     private void askForAI() {
-        System.out.println(Constants.AIQUESTION);
+        System.out.printf("%s ", Constants.AIQUESTION);
         ai = scanner.nextLine();
 
         if (!ai.equals(Constants.YES) && !ai.equals(Constants.NO) && !ai.isEmpty())
@@ -59,44 +69,28 @@ public class Menu {
     }
 
     private void launchGame() {
-        Player[] players = new Player[2];
-        players[0] = new Human(Constants.DEFAULTNAMES[0]);
+        Player[] players = new Player[Constants.MAX_PLAYERS];
+        players[Constants.IDPLAYER1] = new Human(Constants.FIRSTPLAYER);
         if (ai.equals(Constants.YES))
-            players[1] = new AI(Constants.AI);
-        else players[1] = new Human(Constants.DEFAULTNAMES[1]);
+            players[Constants.IDPLAYER2] = new AI(Constants.AI);
+        else players[Constants.IDPLAYER2] = new Human(Constants.SECONDPLAYER);
 
         Controller newGame;
         
         switch (game) {
             case Constants.TICTACTOE:
-                newGame = new TictactoeController(new Tictactoe(players, gameConfigurations), new TictactoeView());
+                newGame = new TictactoeController(new Tictactoe(players), new TictactoeView());
                 break;
             case Constants.CONNECTFOUR:
-                newGame = new ConnectFourController(new ConnectFour(players, gameConfigurations), new ConnectFourView());
+                newGame = new ConnectFourController(new ConnectFour(players), new ConnectFourView());
                 break;
             case Constants.GOMOKU:
-                newGame = new GomokuController(new Gomoku(players, gameConfigurations), new GomokuView());
+                newGame = new GomokuController(new Gomoku(players), new GomokuView());
                 break;
             default:
                 throw new IllegalArgumentException(Constants.INVALIDGAME);
         }
 
         newGame.start();
-    }
-
-    private void setGameConfiguration() {
-        switch (game) {
-            case Constants.TICTACTOE:
-                gameConfigurations = Constants.TICTACTOECONF;
-                break;
-            case Constants.CONNECTFOUR:
-                gameConfigurations = Constants.CONNECTFOURCONF;
-                break;
-            case Constants.GOMOKU:
-                gameConfigurations = Constants.GOMOKUCONF;
-                break;
-            default:
-                throw new IllegalArgumentException(Constants.INVALIDGAME);
-        }
     }
 }

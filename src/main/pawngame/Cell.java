@@ -3,7 +3,7 @@ package main.pawngame;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Cell implements Cloneable {
+public class Cell {
     private Board board;
 
     private ArrayList<Kuplet> kuplets;
@@ -19,11 +19,6 @@ public class Cell implements Cloneable {
         this.x = x;
         this.y = y;
         this.score = 0;
-    }
-
-    @Override
-    public Cell clone() {
-        return new Cell(board.clone(), value, x, y);
     }
 
     public void init() {

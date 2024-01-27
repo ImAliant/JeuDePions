@@ -3,19 +3,19 @@ package main.pawngame;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Board implements Cloneable{
+public class Board {
     private int kuplet;
-    private int column;
     private int row;
+    private int column;
 
     private Cell[][] cells;
 
     private ArrayList<Kuplet> kuplets;
 
-    public Board(int kuplet, int column, int row) {
-        this.kuplet = kuplet;
-        this.column = column;
-        this.row = row;
+    public Board(GameConfigurations config) {
+        this.kuplet = config.getKupletSize();
+        this.row = config.getRow();
+        this.column = config.getColumn();
 
         cells = new Cell[column][row];
         initCells();
@@ -96,21 +96,9 @@ public class Board implements Cloneable{
         return group;
     }
 
-    @Override
-    public Board clone() {
-        Board clone = new Board(kuplet, column, row);
-
-        for (int i = 0; i < column; i++) {
-            for (int j = 0; j < row; j++)
-                clone.cells[i][j] = cells[i][j].clone();
-        }
-
-        return clone;
-    }
-
     public int getKuplet() { return kuplet; }
     public int getColumn() { return column; }
     public int getRow() { return row; }
     public Cell[][] getCells() { return cells; }
-    public ArrayList<Kuplet> getKuplets() { return kuplets; }
+    public List<Kuplet> getKuplets() { return kuplets; }
 }
