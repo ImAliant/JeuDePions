@@ -16,8 +16,6 @@ public abstract class Controller {
     }
 
     public void start() {
-        view.showBoard(model.getBoard());
-
         boolean isGameOver = false;
         while (!isGameOver) {
             view.showCurrentPlayer(model.getCurrentPlayer());

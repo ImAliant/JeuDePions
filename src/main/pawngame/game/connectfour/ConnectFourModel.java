@@ -2,15 +2,16 @@ package main.pawngame.game.connectfour;
 
 import main.pawngame.Constants;
 import main.pawngame.GameConfigurations;
+import main.pawngame.board.ConnectFourBoard;
 import main.pawngame.game.Model;
-import main.pawngame.player.Human;
-import main.pawngame.player.ConnectFourAI;
+import main.pawngame.player.ai.ConnectFourAI;
+import main.pawngame.player.human.ConnectFourHuman;
 
 public class ConnectFourModel extends Model {
     @Override
     protected void createPlayers(boolean ai) {
-        super.createPlayers(ai);
-        players.add(ai ? new ConnectFourAI(): new Human(Constants.SECONDPLAYER));
+        players.add(new ConnectFourHuman(Constants.FIRSTPLAYER, Constants.COLORP1));
+        players.add(ai ? new ConnectFourAI(Constants.COLORP2): new ConnectFourHuman(Constants.SECONDPLAYER, Constants.COLORP2));
     }
 
     @Override
@@ -27,6 +28,8 @@ public class ConnectFourModel extends Model {
     @Override
     protected void createConfig() {
         GameConfigurations.setInstance(Constants.CONNECTFOUR_KUPLET, Constants.CONNECTFOUR_ROW, Constants.CONNECTFOUR_COLUMN);
+
+        board = new ConnectFourBoard(GameConfigurations.getInstance());
     }
 
     @Override

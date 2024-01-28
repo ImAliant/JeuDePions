@@ -1,6 +1,6 @@
 package main.pawngame.game.gomoku;
 
-import main.pawngame.Board;
+import main.pawngame.board.Board;
 import main.pawngame.game.View;
 
 public class GomokuView extends View {

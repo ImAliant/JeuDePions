@@ -1,7 +1,7 @@
 package main.pawngame.game;
 
-import main.pawngame.Board;
 import main.pawngame.UI;
+import main.pawngame.board.Board;
 import main.pawngame.player.Player;
 
 import java.util.Scanner;

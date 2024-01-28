@@ -1,6 +1,6 @@
 package main.pawngame.game.tictactoe;
 
-import main.pawngame.Board;
+import main.pawngame.board.Board;
 import main.pawngame.game.View;
 
 public class TictactoeView extends View {

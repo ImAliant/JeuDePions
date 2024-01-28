@@ -3,6 +3,8 @@ package main.pawngame;
 import java.util.ArrayList;
 import java.util.List;
 
+import main.pawngame.board.Board;
+
 public class Cell {
     private Board board;
 

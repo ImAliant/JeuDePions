@@ -1,10 +1,10 @@
-package main.pawngame.player;
+package main.pawngame.player.ai;
 
-import main.pawngame.Board;
+import main.pawngame.board.Board;
 
-public class GomokuAI extends AI {
-    public GomokuAI() {
-        super();
+public class TictactoeAI extends AI {
+    public TictactoeAI(int color) {
+        super(color);
     }
 
     @Override
@@ -12,4 +12,5 @@ public class GomokuAI extends AI {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'play'");
     }
+    
 }

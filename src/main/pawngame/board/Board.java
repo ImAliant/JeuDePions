@@ -1,18 +1,23 @@
-package main.pawngame;
+package main.pawngame.board;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Board {
+import main.pawngame.Cell;
+import main.pawngame.GameConfigurations;
+import main.pawngame.Kuplet;
+import main.pawngame.player.Player;
+
+public abstract class Board {
     private int kuplet;
     private int row;
     private int column;
 
-    private Cell[][] cells;
+    protected Cell[][] cells;
 
     private ArrayList<Kuplet> kuplets;
 
-    public Board(GameConfigurations config) {
+    protected Board(GameConfigurations config) {
         this.kuplet = config.getKupletSize();
         this.row = config.getRow();
         this.column = config.getColumn();
@@ -93,6 +98,20 @@ public class Board {
         }
             
         return group;
+    }
+
+    public boolean isLegalMove(int row, int column) {
+        return cells[row][column].getValue() == 0;
+    }
+
+    public void makeMove(int row, int column, Player player) {
+        if (!isLegalMove(row, column))
+            throw new IllegalArgumentException("Illegal move");
+        cells[row][column].setValue(player.getColor());
+    }
+
+    public Cell getCell(int row, int column) {
+        return cells[row][column];
     }
 
     public int getKuplet() { return kuplet; }

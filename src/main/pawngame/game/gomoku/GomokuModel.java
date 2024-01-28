@@ -2,15 +2,16 @@ package main.pawngame.game.gomoku;
 
 import main.pawngame.Constants;
 import main.pawngame.GameConfigurations;
+import main.pawngame.board.GomokuBoard;
 import main.pawngame.game.Model;
-import main.pawngame.player.Human;
-import main.pawngame.player.GomokuAI;
+import main.pawngame.player.ai.GomokuAI;
+import main.pawngame.player.human.GomokuHuman;
 
 public class GomokuModel extends Model {
     @Override
     protected void createPlayers(boolean ai) {
-        super.createPlayers(ai);
-        players.add(ai ? new GomokuAI(): new Human(Constants.SECONDPLAYER));
+        players.add(new GomokuHuman(Constants.FIRSTPLAYER, Constants.COLORP1));
+        players.add(ai ? new GomokuAI(Constants.COLORP2): new GomokuHuman(Constants.SECONDPLAYER, Constants.COLORP2));
     }
 
     @Override
@@ -27,6 +28,8 @@ public class GomokuModel extends Model {
     @Override
     protected void createConfig() {
         GameConfigurations.setInstance(Constants.GOMOKU_KUPLET, Constants.GOMOKU_ROW, Constants.GOMOKU_COLUMN);
+
+        board = new GomokuBoard(GameConfigurations.getInstance());
     }
 
     @Override

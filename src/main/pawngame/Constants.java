@@ -38,6 +38,10 @@ public class Constants {
     public static final int IDPLAYER2 = 1;
     public static final int MAX_PLAYERS = 2;
 
+    public static final int EMPTY = 0;
+    public static final int COLORP1 = 1;
+    public static final int COLORP2 = 2;
+
     public static final String YES = "y";
     public static final String NO = "n";
 

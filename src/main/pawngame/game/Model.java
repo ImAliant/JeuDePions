@@ -1,9 +1,8 @@
 package main.pawngame.game;
 
-import main.pawngame.Board;
 import main.pawngame.Constants;
 import main.pawngame.GameConfigurations;
-import main.pawngame.player.Human;
+import main.pawngame.board.Board;
 import main.pawngame.player.Player;
 
 import java.util.Scanner;
@@ -31,16 +30,12 @@ public abstract class Model {
         // we create the players
         players = new ArrayList<>();
         createPlayers(ai);
-    }
-
-    protected void createPlayers(boolean ai) {
-        players.add(new Human(Constants.FIRSTPLAYER));
+        // we set the current player to the first player
+        currentPlayer = players.get(0);
     }
 
     private void initBoard() {
         createConfig();
-
-        board = new Board(GameConfigurations.getInstance());
 
         int row = board.getRow();
         int column = board.getColumn();
@@ -74,8 +69,8 @@ public abstract class Model {
     protected boolean checkWin() {
         winner = currentPlayer;
 
-        return true;
-    };
+        return false;
+    }
 
     public Board getBoard() {
         return board;
@@ -87,6 +82,7 @@ public abstract class Model {
         return winner;
     }
 
+    protected abstract void createPlayers(boolean ai);
     protected abstract void createConfig();
     protected abstract void checkBoardDimension(int row, int column);
     protected abstract void checkBoardDimension();

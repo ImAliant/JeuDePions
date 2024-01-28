@@ -1,10 +1,10 @@
-package main.pawngame.player;
+package main.pawngame.player.ai;
 
-import main.pawngame.Board;
+import main.pawngame.board.Board;
 
-public class ConnectFourAI extends AI{
-    public ConnectFourAI() {
-        super();
+public class GomokuAI extends AI {
+    public GomokuAI(int color) {
+        super(color);
     }
 
     @Override
