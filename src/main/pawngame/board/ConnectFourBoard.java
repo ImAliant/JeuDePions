@@ -1,5 +1,6 @@
 package main.pawngame.board;
 
+import main.pawngame.Cell;
 import main.pawngame.GameConfigurations;
 
 public class ConnectFourBoard extends Board {

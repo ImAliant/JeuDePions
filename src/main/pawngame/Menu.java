@@ -27,7 +27,6 @@ public class Menu {
         launchGame();
     }
 
-    // TODO set this function in a specific class
     private void clearScreen() {
         System.out.print("\033[H\033[2J");
         System.out.flush();

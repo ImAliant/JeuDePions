@@ -30,7 +30,7 @@ public class Cell {
         }
     }
 
-    public int score() {
+    public int updateScore() {
         if (value != 0) score = 0;
         else {
             int scr = 0;

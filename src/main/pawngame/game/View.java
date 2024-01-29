@@ -31,6 +31,16 @@ public abstract class View implements UI {
     }
 
     public void showWinner(Player player) {
+        if (player == null) {
+            System.out.println("It's a draw!");
+            return;
+        }
+
         System.out.println("The winner is " + player.getName());
+    }
+
+    public void cleanScreen() {
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
     }
 }

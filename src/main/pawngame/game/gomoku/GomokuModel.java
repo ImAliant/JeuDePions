@@ -21,11 +21,6 @@ public class GomokuModel extends Model {
     }
 
     @Override
-    protected boolean checkWin() {
-        return super.checkWin();
-    }
-
-    @Override
     protected void createConfig() {
         GameConfigurations.setInstance(Constants.GOMOKU_KUPLET, Constants.GOMOKU_ROW, Constants.GOMOKU_COLUMN);
 

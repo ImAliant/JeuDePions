@@ -21,11 +21,6 @@ public class TictactoeModel extends Model {
     }
 
     @Override
-    protected boolean checkWin() {
-        return super.checkWin();
-    }
-
-    @Override
     protected void createConfig() {
         GameConfigurations.setInstance(Constants.TICTACTOE_KUPLET, Constants.TICTACTOE_ROW, Constants.TICTACTOE_COLUMN);
 

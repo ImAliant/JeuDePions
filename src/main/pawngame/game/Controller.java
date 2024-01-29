@@ -18,9 +18,13 @@ public abstract class Controller {
     public void start() {
         boolean isGameOver = false;
         while (!isGameOver) {
+            view.cleanScreen();
             view.showCurrentPlayer(model.getCurrentPlayer());
             view.showBoard(model.getBoard());
             model.turn();
+
+            // update the kuplet
+            model.updateKuplet();
 
             isGameOver = model.checkWin();
 

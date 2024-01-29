@@ -11,13 +11,15 @@ public class ConnectFourHuman extends Human {
 
     @Override
     public void play(Board board) {
+        int row;
         int col;
         do {
             System.out.println("Enter column [0..6]: ");
             col = scanner.nextInt();
-        } while (!board.isLegalMove(((ConnectFourBoard) board).findRow(col), col));
+            row = ((ConnectFourBoard) board).findRow(col);
+        } while (!board.isLegalMove(row, col));
 
-        board.makeMove(((ConnectFourBoard) board).findRow(col), col, this);
+        board.makeMove(row, col, this);
     }
     
 }

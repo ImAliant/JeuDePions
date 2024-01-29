@@ -1,10 +1,23 @@
 package main.pawngame.player.ai;
 
+import main.pawngame.Cell;
 import main.pawngame.Constants;
+import main.pawngame.board.Board;
 import main.pawngame.player.Player;
 
 public abstract class AI extends Player{
     protected AI(int color) {
         super(Constants.AI, color);
+    }
+
+    public void play(Board board) {
+        int row;
+        int col;
+        do {
+            Cell bestMove = board.findBestMove();
+            row = bestMove.getX();
+            col = bestMove.getY();
+        } while (!board.isLegalMove(row, col));
+        board.makeMove(row, col, this);
     }
 }

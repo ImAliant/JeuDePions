@@ -2,11 +2,13 @@ package main.pawngame.game;
 
 import main.pawngame.Constants;
 import main.pawngame.GameConfigurations;
+import main.pawngame.Kuplet;
 import main.pawngame.board.Board;
 import main.pawngame.player.Player;
 
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.Optional;
 
 public abstract class Model {
     protected Scanner scanner = new Scanner(System.in);
@@ -47,6 +49,13 @@ public abstract class Model {
         currentPlayer.play(board);
     }
 
+    public void updateKuplet() {
+        // kuplet of the board
+        board.updateKupletScore();
+        // kuplet of the cell of the board
+        board.updateCellKupletScore();
+    }
+
     protected void changePlayer() {
         int id = currentPlayer.getId();
         currentPlayer = players.get((id + 1) % players.size());
@@ -66,8 +75,21 @@ public abstract class Model {
         return ai;
     }
 
-    protected boolean checkWin() {
-        winner = currentPlayer;
+    public boolean checkWin() {
+        Optional<Player> winnerOpt = players.stream()
+            .filter(player -> board.getKuplets().stream()
+                .anyMatch(kuplet -> kuplet.isFullOf(player.getColor())))
+            .findFirst();
+
+        if (winnerOpt.isPresent()) {
+            winner = winnerOpt.get();
+            return true;
+        }
+
+        if (board.isFull()) {
+            winner = null;
+            return true;
+        }
 
         return false;
     }

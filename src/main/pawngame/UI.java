@@ -7,4 +7,6 @@ public interface UI {
     public void printBorder();
     public void printBoardRepresentation(Board board);
     public void printOffset();
+
+    public void cleanScreen();
 }

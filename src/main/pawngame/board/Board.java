@@ -1,6 +1,7 @@
 package main.pawngame.board;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import main.pawngame.Cell;
@@ -85,6 +86,41 @@ public abstract class Board {
         for (Kuplet k : kuplets) {
             for (Cell cell : k.getCases())
                 cell.init();
+        }
+    }
+
+    public Cell findBestMove() {
+        Cell bestMove = null;
+        int bestScore = 0;
+
+        for (Cell[] r : cells) {
+            for (Cell cell : r) {
+                if (cell.getScore() > bestScore) {
+                    bestScore = cell.getScore();
+                    bestMove = cell;
+                }
+            }
+        }
+
+        return bestMove;
+    }
+
+    public boolean isFull() {
+        return Arrays.stream(cells)
+            .flatMap(Arrays::stream)
+            .noneMatch(cell -> cell.getValue() == 0);
+    }
+
+    public void updateKupletScore() {
+        for (Kuplet k: kuplets) {
+            k.updateScore();
+        }
+    }
+
+    public void updateCellKupletScore() {
+        for (Cell[] r : cells) {
+            for (Cell cell : r)
+                cell.updateScore();
         }
     }
 

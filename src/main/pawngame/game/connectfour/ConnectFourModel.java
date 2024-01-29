@@ -21,11 +21,6 @@ public class ConnectFourModel extends Model {
     }
 
     @Override
-    protected boolean checkWin() {
-        return super.checkWin();
-    }
-
-    @Override
     protected void createConfig() {
         GameConfigurations.setInstance(Constants.CONNECTFOUR_KUPLET, Constants.CONNECTFOUR_ROW, Constants.CONNECTFOUR_COLUMN);
 
