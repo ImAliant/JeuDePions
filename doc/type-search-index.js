@@ -1,1 +1,0 @@
-typeSearchIndex = [{"l":"All Classes","u":"allclasses-index.html"},{"p":"main.jeu","l":"Case"},{"p":"main.jeu","l":"Humain"},{"p":"main.jeu","l":"Jeu"},{"p":"main.jeu","l":"Joueur"},{"p":"main.jeu","l":"kuplet"},{"p":"main.jeu","l":"Main"},{"p":"main.jeu","l":"Ordinateur"},{"p":"main.jeu","l":"Plateau"}];updateSearchResults();
