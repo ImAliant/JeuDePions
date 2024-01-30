@@ -23,7 +23,6 @@ public abstract class Controller {
             view.showBoard(model.getBoard());
             model.turn();
 
-            // update the kuplet
             model.updateKuplet();
 
             isGameOver = model.checkWin();

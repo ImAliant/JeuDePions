@@ -1,8 +1,6 @@
 package main.pawngame.game;
 
 import main.pawngame.Constants;
-import main.pawngame.GameConfigurations;
-import main.pawngame.Kuplet;
 import main.pawngame.board.Board;
 import main.pawngame.player.Player;
 
@@ -66,8 +64,11 @@ public abstract class Model {
 
         System.out.printf("%s ", Constants.AIQUESTION);
         String rep = scanner.nextLine();
-        if (!rep.equals(Constants.YES) && !rep.equals(Constants.NO) && !rep.isEmpty())
-            throw new IllegalArgumentException(Constants.INVALIDANSWER);
+        // if the user enter an incorrect value, we repeat the question
+        while (!rep.matches(Constants.YESNOREGEX)) {
+            System.out.printf("%s ", Constants.INVALIDAI);
+            rep = scanner.nextLine();
+        }
         
         if (rep.equals(Constants.NO)) ai = false;
         System.out.println();

@@ -51,13 +51,15 @@ public class Constants {
     public static final String DEFAULTGAME = "1";
     public static final boolean DEFAULTAI = true;
 
-    public static final String FORMATNAME = "%-15s (%s)";
-
     public static final String WELCOME = String.format("Welcome to the PawnGame ! %d games are available:", GAMES.size());
     public static final String GAMEQUESTION = "What game do you want to play? (default is 1) [1..3]:";
     public static final String AIQUESTION = "Do you want to play against an AI? (default is y) [y/n]:";
     public static final String GAMECONFIGQUESTION = "Do you want to play with the default configuration? (default is y) [y/n]:";
 
-    public static final String INVALIDGAME = "Invalid game";
+    public static final String INVALIDGAME = String.format("Invalid game, please enter a number between 1 and %d: ", GAMES.size());
     public static final String INVALIDANSWER = "Invalid answer";
+    public static final String INVALIDAI = "Invalid answer, please enter y or n: ";
+
+    public static final String NUMBERREGEX = "[0-9]+";
+    public static final String YESNOREGEX = "[yn]";
 }

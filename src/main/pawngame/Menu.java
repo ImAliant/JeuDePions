@@ -11,7 +11,6 @@ public class Menu {
     protected final Scanner scanner = new Scanner(System.in);
 
     private int game;
-    private String ai;
 
     public Menu() {
         run();
@@ -33,7 +32,7 @@ public class Menu {
     }
 
     private void welcomeMessage() {
-        System.out.printf("%s \n", Constants.WELCOME);
+        System.out.printf("%s %n", Constants.WELCOME);
     }
 
     private void askForGame() {
@@ -44,8 +43,11 @@ public class Menu {
 
         if (rep.isEmpty())
             rep = Constants.DEFAULTGAME;
-        if (Integer.parseInt(rep) < 1 || Integer.parseInt(rep) > Constants.GAMES.size()+1)
-            throw new IllegalArgumentException(Constants.INVALIDGAME);
+        
+        while (!rep.matches(Constants.NUMBERREGEX) || Integer.parseInt(rep) < 1 || Integer.parseInt(rep) > 3) {
+            System.out.printf("%s ", Constants.INVALIDGAME);
+            rep = scanner.nextLine();
+        }
 
         game = Integer.parseInt(rep);
 
