@@ -15,10 +15,13 @@ public class ConnectFourAI extends AI{
         int col;
         do {
             Cell bestMove = board.findBestMove();
-            col = bestMove.getX();
-            row = ((ConnectFourBoard) board).findRow(col);
-        } while (!board.isLegalMove(row, col));
+            col = bestMove.getY();
 
+            if (col < 0 || col >= board.getColumn())
+                throw new IllegalArgumentException("Column is out of range");
+        } while (((ConnectFourBoard) board).isFull(col));
+
+        row = ((ConnectFourBoard) board).findRow(col);
         board.makeMove(row, col, this);
     }
 }

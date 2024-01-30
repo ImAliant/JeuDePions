@@ -35,6 +35,8 @@ public abstract class Controller {
     }
 
     public void end() {
+        view.cleanScreen();
+        view.showBoard(model.getBoard());
         view.showWinner(model.getWinner());
     }
 }

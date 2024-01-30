@@ -17,6 +17,11 @@ public abstract class AI extends Player{
             Cell bestMove = board.findBestMove();
             row = bestMove.getX();
             col = bestMove.getY();
+
+            if (row < 0 || row >= board.getRow())
+                throw new IllegalArgumentException("Row is out of range");
+            if (col < 0 || col >= board.getColumn())
+                throw new IllegalArgumentException("Column is out of range");
         } while (!board.isLegalMove(row, col));
         board.makeMove(row, col, this);
     }
